@@ -211,3 +211,25 @@ Suppose you have three servers: Server A, Server B, and Server C. When a new req
 <div align="center">
   <img src="./random.png" alt="random algo" />
 </div>
+
+## 8. Least Bandwidth
+The Least Bandwidth load balancing algorithm **distributes incoming requests** to servers **based on the current bandwidth usage**. It routes each new request to the server that is **consuming the least amount of bandwidth at the time**. This approach helps in balancing the network load more efficiently by ensuring that no single server gets overwhelmed with too much data traffic.
+
+### Pros
+- **Dynamic Load Balancing**: Continuously adjusts to the current network load, ensuring optimal distribution of traffic.
+- **Prevents Overloading**: Helps in preventing any single server from being overwhelmed with too much data traffic, leading to better performance and stability.
+- **Efficient Resource Utilization**: Ensures that all servers are utilized more effectively by balancing the bandwidth usage.
+
+### Cons
+- **Complexity**: **More complex** to implement compared to simpler algorithms like Round Robin, as it requires continuous **monitoring of bandwidth usage**.
+- **Overhead**: **Monitoring bandwidth** and **dynamically adjusting** the load can introduce **additional overhead**.
+- **Short-Term Variability**: Bandwidth usage can fluctuate in the short term, potentially causing frequent rebalancing.
+
+### Use Cases
+- **High Bandwidth Applications**: Ideal for applications with **high bandwidth usage**, such as **video streaming**, **file downloads**, and **large data transfers**.
+- **Content Delivery Networks (CDNs)**: Useful for CDNs that need to balance traffic efficiently to deliver content quickly.
+- **Real-Time Applications**: Suitable for real-time applications where **maintaining low latency** is **critical**.
+
+<div align="center">
+  <img src="./least-bandwidth.png" alt="random algo" />
+</div>
