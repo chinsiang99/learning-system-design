@@ -233,3 +233,30 @@ The Least Bandwidth load balancing algorithm **distributes incoming requests** t
 <div align="center">
   <img src="./least-bandwidth.png" alt="random algo" />
 </div>
+
+## 9. Custom Load
+Custom Load load balancing is a **flexible** and **highly configurable** approach that allows you to **define your own metrics** and **rules** for distributing incoming traffic across a pool of servers. Unlike standard load balancing algorithms that use predefined criteria such as connection count or response time, Custom Load load balancing enables you to tailor the distribution strategy based on specific requirements and **conditions unique to your application or infrastructure**.
+
+### How Custom Load Load Balancing Works
+- **Define Custom Metrics**: Determine the metrics that best represent the load or performance characteristics relevant to your application. These metrics can include **CPU usage**, **memory usage**, **disk I/O**, **application-specific metrics**, or a **combination of several metrics**.
+
+- **Implement Monitoring**: **Continuously monitor** the **defined metrics** on each server in the pool. This may involve integrating with monitoring tools or custom scripts that collect and report the necessary data.
+
+- **Create Load Balancing Rules**: **Establish rules** and **algorithms** that use the monitored metrics to make load balancing decisions. This can be a simple weighted sum of metrics or more complex logic that prioritizes certain metrics over others.
+
+- **Dynamic Adjustment**: Use the collected data and rules to **dynamically adjust** the distribution of incoming requests, ensuring that the traffic is balanced according to the custom load criteria.
+
+### Pros
+- **Flexibility**: Allows for **highly customized load balancing strategies** tailored to the **specific needs and performance characteristics** of your application.
+- **Optimized Resource Utilization**: Can lead to **more efficient** use of server resources by considering a comprehensive set of metrics.
+- **Adaptability**: Easily adaptable to changing conditions and requirements, making it suitable for complex and dynamic environments.
+
+### Cons
+- **Complexity**: **More complex** to implement and configure compared to standard load balancing algorithms.
+- **Monitoring Overhead**: Requires continuous monitoring of multiple metrics, which can introduce additional overhead.
+- **Potential for Misconfiguration**: Incorrectly defined metrics or rules can lead to suboptimal load balancing and performance issues.
+
+### Use Cases
+- **Complex Applications**: Ideal for applications with **complex performance characteristics** and **varying resource requirements**.
+- **Highly Dynamic Environments**: Suitable for environments where workloads and server performance can **change rapidly** and **unpredictably**.
+- **Custom Requirements**: Useful when standard load balancing algorithms do not meet the specific needs of the application.
