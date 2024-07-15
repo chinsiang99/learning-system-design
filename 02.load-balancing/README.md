@@ -13,3 +13,11 @@ To *utilize* **full scalability** and **redundancy**, we can try to balance the 
 <div align="center">
   <img src="./sample-load-balancing.png" alt="sample load balancing" />
 </div>
+
+## Key terminology and concepts
+1. **Load Balancer**: A *device* or *software* that **distributes network traffic** across **multiple servers** based on **predefined rules or algorithms**
+2. **Backend Servers**: The servers that **receive** and **process** requests **forwarded** by the *load balancer*. Also referred to as *server pool* or *server fam*
+3. **Load Balancing Algorithm**: The **method** used by the load balancer to **determine how to distribute incoming traffic** among the backend servers.
+4. **Health Checks**: **Periodic tests** performed by the *load balancer* to **determine the availability** and **performance** of backend servers. *Unhealthy servers* are **removed** from the server pool **until they recover**.
+5. **Session Persistence**: A technique **used to ensure that subsequent requests from the same client are directed to the same backend server**, maintaining session state and providing a consistent user experience.
+6. **SSL/TLS Termination**: The *process* of **decrypting SSL/TLS-encrypted traffic at the load balancer level**, **offloading** the *decryption burden* from *backend servers* and allowing for **centralized SSL/TLS management**.
