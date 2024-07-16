@@ -60,3 +60,15 @@ System maintenance involves tasks such as **hardware inspections**, **software u
 Geographic distribution is a strategy that involves deploying system components **across multiple locations or data centers**. This ensures that even if one region or data center experiences an outage, users can still access the system from other geographically dispersed locations.
 
 Geographic distribution is particularly important for organizations with a global presence or those that rely heavily on cloud infrastructure. By strategically placing system components in different geographical areas, organizations can ensure that users from various locations can access the system without any interruptions, regardless of localized incidents or natural disasters.
+
+# Latency and Performance
+Latency and performance are critical aspects of distributed systems, as they directly impact the user experience and the **system's ability to handle large amounts of data and traffic**. In distributed systems, optimizing latency and performance involves considering factors such as **data locality**, **load balancing**, and **caching strategies**. Here's an overview of these aspects of latency and performance:
+
+## 1. Data Locality
+Data locality refers to the **organization and distribution of data within a distributed system** to minimize the amount of data that needs to be transferred between nodes. By storing related data close together or near the nodes that access it most frequently, you can reduce the latency associated with data retrieval and improve overall performance. Techniques to achieve data locality include **data partitioning**, **sharding**, and **data replication**.
+
+## 2. Load Balancing
+Load balancing is the process of distributing incoming network traffic or computational workload across multiple nodes or resources to ensure that no single node is overwhelmed. This helps to optimize resource utilization, minimize response times, and prevent system overloads. Various load balancing algorithms, such as round-robin, least connections, and consistent hashing, can be employed to achieve efficient load distribution and improved system performance.
+
+## 3. Caching Strategies
+Caching is a *technique* used to **store frequently accessed data** or **computed results temporarily**, allowing the system to quickly retrieve the data **from cache** instead of recalculating or fetching it from the primary data source. By implementing effective caching strategies, you can significantly reduce latency and improve the performance of your distributed system. Common caching strategies include **in-memory caching**, **distributed caching**, and **content delivery networks** (*CDNs*).
