@@ -1,0 +1,10 @@
+# Introduction to API Gateway
+An API Gateway is a **server-side architectural component** in a software system that acts as an **intermediary** between clients (such as web browsers, mobile apps, or other services) and backend services, microservices, or APIs.
+
+Its **main purpose** is to **provide a single entry point for external consumers to access the services and functionalities of the backend system**. It receives client requests, forwards them to the appropriate microservice, and then returns the server’s response to the client.
+
+The API gateway is responsible for tasks such as **routing**, **authentication**, and **rate limiting**. This enables microservices to focus on their individual tasks and improves the overall performance and scalability of the system.
+
+<div align="center">
+  <img src="./api-gateway.png" alt="api gateway" />
+</div>
