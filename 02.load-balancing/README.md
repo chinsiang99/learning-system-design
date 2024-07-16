@@ -335,3 +335,18 @@ Hardware load balancers are physical devices designed specifically for load bala
 - **Limited scalability**, as *adding capacity* may **require purchasing additional hardware**.
 
 - Example: A large e-commerce company uses a hardware load balancer to distribute incoming web traffic among multiple web servers, ensuring fast response times and a smooth shopping experience for customers.
+
+## 2. Software Load Balancing
+Software load balancers are applications that run on general-purpose servers or virtual machines. They use software algorithms to distribute incoming traffic among multiple servers or resources.
+
+### Pros:
+- Generally **more affordable than hardware load balancers**.
+- Can be **easily scaled** by **adding more resources** or **upgrading the underlying hardware**.
+- **Provides flexibility**, as they can be **deployed on a variety of platforms and environments**, including cloud-based infrastructure.
+
+### Cons:
+- May have **lower performance compared to hardware load balancers**, especially under heavy loads.
+- **Can consume resources on the host system**, potentially affecting other applications or services.
+- May require ongoing software updates and maintenance.
+
+- Example: A startup with a growing user base deploys a software load balancer on a cloud-based virtual machine, distributing incoming requests among multiple application servers to handle increased traffic.
