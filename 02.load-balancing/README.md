@@ -415,3 +415,20 @@ Hybrid load balancing **combines the features** and **capabilities of multiple l
 - **Potentially higher costs**, as it may involve a combination of hardware, software, and cloud-based services.
 
 - Example: A large-scale online streaming platform uses a hybrid load balancing strategy, combining hardware load balancers in their data centers for high-performance traffic distribution, cloud-based load balancers for scalable content delivery, and DNS load balancing for global traffic management. This approach ensures optimal performance, scalability, and reliability for their millions of users worldwide.
+
+## 7. Layer 4 Load Balancing
+Layer 4 load balancing, also known as **transport layer load balancing**, operates at the **transport layer of the OSI model** (*the fourth layer*). It distributes incoming traffic **based on information from the TCP or UDP header**, such as **source and destination IP addresses** and **port numbers**.
+
+### Pros:
+
+- **Fast and efficient**, as it makes decisions based on limited information from the transport layer.
+- Can handle a wide variety of protocols and traffic types.
+- Relatively **simple to implement and manage**.
+
+### Cons:
+
+- Lacks awareness of application-level information, which may limit its effectiveness in some scenarios.
+- **No consideration** for **server health**, **response time**, or **resource utilization**.
+- May not be suitable for applications requiring session persistence or fine-grained load distribution.
+
+- Example: An online gaming platform uses Layer 4 load balancing to distribute game server traffic based on IP addresses and port numbers, ensuring that players are evenly distributed among available game servers for smooth gameplay.
