@@ -140,3 +140,6 @@ Consistency models are fundamental in distributed systems, defining the rules fo
 ### 8. Linearizability (Strong Consistency)
 - Definition: A stronger version of sequential consistency, it ensures that all operations are atomic and instantly visible to all nodes.
 - Example: In a distributed key-value store, once a new value is written to a key, any read operation on any node immediately reflects this change.
+
+## Summary
+Each consistency model addresses specific requirements and challenges in distributed systems, balancing the trade-offs between providing timely, consistent views of data and maintaining system performance and availability. The choice of a consistency model often depends on the specific requirements of the application and the nature of the data being managed.
