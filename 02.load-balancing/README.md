@@ -399,3 +399,19 @@ Software load balancers are applications that run on general-purpose servers or 
 
 - Example: A multinational corporation uses GSLB to distribute incoming requests for its web applications among several data centers around the world, ensuring high availability and optimal performance for users in different regions.
 
+## 6. Hybrid Load Balancing
+Hybrid load balancing **combines the features** and **capabilities of multiple load balancing techniques** to achieve the best possible performance, scalability, and reliability. It typically involves a mix of hardware, software, and cloud-based solutions to provide the most effective and flexible load balancing strategy for a given scenario.
+
+### Pros:
+
+- Offers a **high degree of flexibility**, as it can be tailored to specific requirements and infrastructure.
+- Can provide the **best combination of performance**, **scalability**, and **reliability** by leveraging the strengths of different load balancing techniques.
+- Allows organizations to adapt and **evolve their load balancing strategy** as **their needs change over time**.
+
+### Cons:
+
+- Can be **more complex to set up**, **configure**, and **manage** than single-technique solutions.
+- May **require a higher level of expertise** and understanding of multiple load balancing techniques.
+- **Potentially higher costs**, as it may involve a combination of hardware, software, and cloud-based services.
+
+- Example: A large-scale online streaming platform uses a hybrid load balancing strategy, combining hardware load balancers in their data centers for high-performance traffic distribution, cloud-based load balancers for scalable content delivery, and DNS load balancing for global traffic management. This approach ensures optimal performance, scalability, and reliability for their millions of users worldwide.
