@@ -350,3 +350,34 @@ Software load balancers are applications that run on general-purpose servers or 
 - May require ongoing software updates and maintenance.
 
 - Example: A startup with a growing user base deploys a software load balancer on a cloud-based virtual machine, distributing incoming requests among multiple application servers to handle increased traffic.
+
+## 3. Cloud-based Load Balancing
+**Cloud-based load balancers** are provided as a **service** by **cloud providers**. They offer load balancing capabilities as part of their infrastructure, allowing users to easily distribute traffic among resources within the cloud environment.
+
+### Pros:
+- **Highly scalable**, as they can easily accommodate changes in traffic and resource demands.
+- **Simplified management**, as the cloud **provider takes care of maintenance, updates, and security**.
+- Can be **more cost-effective**, as users **only pay for the resources they use**.
+
+### Cons:
+
+- **Reliance** on the cloud provider for performance, reliability, and security.
+- May have **less control over configuration** and **customization** compared to self-managed solutions.
+- **Potential vendor lock-in**, as switching to another cloud provider or platform may require significant changes.
+
+- Example: A mobile app developer uses a cloud-based load balancer provided by their cloud provider to distribute incoming API requests among multiple backend servers, ensuring smooth app performance and quick response times.
+
+## 4. DNS Load Balancing
+**DNS** (*Domain Name System*) load balancing **relies** on the **DNS infrastructure** to distribute incoming traffic among multiple servers or resources. It works by **resolving a domain name** to **multiple IP addresses**, effectively *directing* **clients to different servers** **based on various policies**.
+
+### Pros:
+- **Relatively simple to implement**, as it doesn't require specialized hardware or software.
+- Provides basic load balancing and failover capabilities.
+- Can distribute traffic **across geographically distributed servers**, improving performance for users in **different regions**.
+
+### Cons:
+- **Limited to DNS resolution time**, which can be slow to update when compared to other load balancing techniques.
+- No consideration for **server health**, **response time**, or **resource utilization**.
+- **May not be suitable** for applications **requiring session persistence or fine-grained load distribution**.
+
+- Example: A content delivery network (CDN) uses DNS load balancing to direct users to the closest edge server based on their geographical location, ensuring faster content delivery and reduced latency.
