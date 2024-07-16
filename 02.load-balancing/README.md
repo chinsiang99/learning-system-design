@@ -381,3 +381,21 @@ Software load balancers are applications that run on general-purpose servers or 
 - **May not be suitable** for applications **requiring session persistence or fine-grained load distribution**.
 
 - Example: A content delivery network (CDN) uses DNS load balancing to direct users to the closest edge server based on their geographical location, ensuring faster content delivery and reduced latency.
+
+## 5. Global Server Load Balancing (GSLB)
+**Global Server Load Balancing** (*GSLB*) is a technique used to distribute traffic across **geographically dispersed data centers**. It **combines DNS load balancing** with **health checks** and other **advanced features** to provide a more intelligent and efficient traffic distribution method.
+
+### Pros:
+
+- Provides *load balancing* and *failover capabilities* **across multiple data centers** or **geographic locations**.
+- Can improve performance and reduce latency for users by directing them to the **closest** or **best-performing** data center.
+- Supports advanced features, such as **server health checks**, **session persistence**, and **custom routing policies**.
+
+### Cons:
+
+- Can be **more complex** to set up and manage than other load balancing techniques.
+- May require **specialized hardware** or **software**, **increasing costs**.
+- Can be subject to the **limitations of DNS**, such as **slow updates** and **caching issues**.
+
+- Example: A multinational corporation uses GSLB to distribute incoming requests for its web applications among several data centers around the world, ensuring high availability and optimal performance for users in different regions.
+
