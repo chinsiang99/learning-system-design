@@ -432,3 +432,20 @@ Layer 4 load balancing, also known as **transport layer load balancing**, operat
 - May not be suitable for applications requiring session persistence or fine-grained load distribution.
 
 - Example: An online gaming platform uses Layer 4 load balancing to distribute game server traffic based on IP addresses and port numbers, ensuring that players are evenly distributed among available game servers for smooth gameplay.
+
+## 8. Layer 7 Load Balancing
+Layer 7 load balancing, also known as **application layer load balancing**, operates at the **application layer of the OSI model** (*the seventh layer*). It takes into account application-specific information, such as **HTTP headers**, **cookies**, and **URL paths**, to make more informed decisions about how to distribute incoming traffic.
+
+### Pros:
+
+- Provides **more intelligent and fine-grained load balancing**, as it **considers application-level information**.
+- Can support advanced features, such as **session persistence**, **content-based routing**, and **SSL offloading**.
+- Can be tailored to specific application requirements and protocols.
+
+### Cons:
+
+- Can be **slower** and **more resource-intensive compared to Layer 4 load balancing**, as it **requires deeper inspection** of incoming traffic.
+- May require specialized software or hardware to handle application-level traffic inspection and processing.
+- Potentially **more complex to set up and manage** compared to other load balancing techniques.
+
+- Example: A web application with multiple microservices uses Layer 7 load balancing to route incoming API requests based on the URL path, ensuring that each microservice receives only the requests it is responsible for handling.
