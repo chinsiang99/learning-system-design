@@ -173,3 +173,24 @@ DNS is essential for the smooth functioning of the internet. Some of its key ben
 - Caching resolver: A caching resolver stores previously resolved queries in its cache, speeding up the resolution process for future requests. If the requested information is available in the cache, the caching resolver returns the answer directly without contacting other DNS servers.
 
 - Forwarding resolver: A forwarding resolver forwards DNS queries to another resolver, which is typically a caching resolver, instead of contacting DNS servers directly. This setup allows for better control, security, and performance.
+
+# DNS Resolution Process
+DNS **translates human-readable domain names** into **machine-readable IP addresses**. This translation process, known as DNS resolution, enables users to access websites and online services using easy-to-remember domain names instead of having to memorize complex numerical IP addresses. The DNS resolution process involves a series of recursive and iterative queries, utilizing a distributed and hierarchical infrastructure of DNS servers, resolvers, and caching mechanisms. This chapter delves into the details of the DNS resolution process, providing a clear understanding of how domain names are resolved into IP addresses and the role of various DNS components in ensuring a seamless and efficient browsing experience for users.
+
+
+## 1. Recursive and Iterative DNS queries
+DNS resolution is the process of converting a domain name into its corresponding IP address. There are two types of DNS queries involved in this process: recursive and iterative queries.
+
+- Recursive query: In a recursive query, the DNS resolver asks for the complete answer to a query from the DNS server. If the server has the answer, it responds with the required information. If not, the server takes responsibility for contacting other DNS servers to find the answer and then returns it to the resolver. Recursive queries put more responsibility on the DNS server to find the requested information.
+
+- Iterative query: In an iterative query, the DNS resolver asks the DNS server for the best answer it has at the moment. If the server doesn't have the complete answer, it responds with a referral to another server that might have more information. The resolver then contacts that server with a new iterative query, repeating the process until it finds the complete answer. In iterative queries, the resolver takes on more responsibility for finding the requested information.
+
+## 2. DNS caching and TTL (Time To Live)
+To speed up the DNS resolution process, resolvers and servers cache the results of previous queries. When a resolver receives a query, it first checks its cache to see if the answer is already available. If it finds the cached information, it returns the answer without contacting other servers, saving time and reducing network traffic.
+
+Each DNS record has an associated Time To Live (TTL) value, which specifies how long the record should be stored in the cache. TTL is measured in seconds, and once the TTL expires, the cached information is removed to ensure that outdated information is not used.
+
+## 3. Negative caching
+Negative caching is the process of caching the non-existence of a DNS record. When a resolver receives a query for a non-existent domain or record, it caches this information as a negative response, preventing repeated queries for the same non-existent resource. This reduces the load on DNS servers and improves overall performance.
+
+In short, the DNS resolution process involves converting a domain name into its corresponding IP address using recursive and iterative queries. Resolvers and servers cache the results of previous queries to speed up the resolution process, with TTL values determining how long the records are stored. Negative caching helps improve performance by caching the non-existence of DNS records.
