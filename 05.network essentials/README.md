@@ -98,3 +98,36 @@ Streaming a live sports event: UDP is used for faster transmission, even if it m
 
 ## Conclusion
 TCP is used for applications where reliable and accurate data transmission is crucial, whereas UDP is chosen for applications where speed is more important than reliability, and some loss of data is acceptable.
+
+# URL vs. URI vs. URN
+Understanding the differences between **URL**, **URI**, and **URN** can be crucial in web development and networking. Let's break down these concepts:
+
+## URL (Uniform Resource Locator):
+- Definition: A URL is a **specific type of URI** that **not only identifies a resource on the internet** but also **provides a method to locate** it by **describing its primary access mechanism**, usually its network location.
+- Components: It typically **includes a protocol** (such as HTTP, HTTPS, FTP), domain name, and path, optionally followed by query parameters or a fragment identifier.
+- Example: https://www.example.com/path?query=term#section
+- Key Characteristics:
+    - Specifies how the resource can be accessed (protocol).
+    - Includes the location of the resource (like a web address).
+
+## URI (Uniform Resource Identifier):
+- Definition: A *URI* is a **generic term** used to identify a resource either by **location, name, or both**. It serves as a **universal identifier** for resources on the internet.
+- Scope: All **URLs** and **URNs** are **URIs**, but not all URIs are URLs or URNs.
+- Example: A URL **https://www.example.com** is also a URI, and a URN like **urn:isbn:0451450523** (identifying a book by its ISBN) is also a URI.
+- Key Characteristics:
+    - A more general concept than both URL and URN.
+    - It can be either a **locator** (*URL*), a **name** (*URN*), or **both**.
+
+## URN (Uniform Resource Name):
+- Definition: A URN is a type of URI that **names a resource** without describing how to locate it. It’s used to assign a **unique and persistent identifier** to a resource.
+- Example: **urn:isbn:0451450523** uniquely identifies a book using its ISBN, irrespective of where it exists.
+- Key Characteristics:
+    - Provides a **unique and persistent** identifier.
+    - **Does not specify a location** or **method** to access the resource.
+
+## Summary of Differences:
+- URL: Specifies both the identity and the location of a resource (How and Where).
+- URI: A more comprehensive term covering both URLs (identifying and locating) and URNs (just identifying).
+- URN: Focuses only on uniquely identifying a resource, not on where it is located or how to access it.
+
+In practical terms, when you’re browsing the internet, you're mostly dealing with URLs. URIs and URNs come more into play in specific contexts like software development, digital libraries, and systems where unique and persistent identification of a resource is crucial.
