@@ -31,3 +31,70 @@ Trustworthiness: Websites with HTTPS are generally trusted more by users. **Brow
 
 ## Summary
 In summary, while HTTP is fine for simple, informational content, HTTPS is essential for any situation where security and privacy are important. The widespread adoption of HTTPS is part of an ongoing effort to create a more secure and trustworthy internet.
+
+# TCP vs. UDP
+**TCP** (Transmission Control Protocol) and **UDP** (User Datagram Protocol) are two of the main protocols used for **transmitting data over the internet**. Each has its characteristics, advantages, and disadvantages, making them suitable for different types of applications.
+
+## TCP (Transmission Control Protocol)
+
+### Definition
+TCP is a **connection-oriented protocol** that ensures **reliable**, **ordered**, and **error-checked delivery** of a stream of bytes between applications.
+
+### Characteristics
+- Reliability: TCP **ensures that data is delivered accurately** and in **order**, retransmitting lost or corrupted packets.
+- Connection-Oriented: **Establishes a connection** between sender and receiver **before transmitting data**.
+- Flow Control: Manages data transmission rate to prevent network congestion.
+- Congestion Control: Adjusts the transmission rate based on network traffic conditions.
+- Acknowledgements and Retransmissions: Uses acknowledgments to confirm receipt of data and retransmits if necessary.
+
+### Use Cases
+Applications where **reliability** and **order** are **critical**, like **web browsing** (HTTP/HTTPS), **email** (SMTP, POP3, IMAP), and **file transfers** (FTP).
+
+### Example
+Loading a webpage: TCP is used to ensure all web content is loaded correctly and in the right order.
+
+## UDP (User Datagram Protocol)
+### Definition
+UDP is a **connectionless protocol** that sends messages, called datagrams, **without establishing a prior connection** and **without guaranteeing reliability or order**.
+
+### Characteristics
+- Low Overhead: **Does not establish a connection**, leading to **lower overhead** and **latency**.
+- Unreliable Delivery: Does not guarantee message delivery, order, or error checking.
+- Speed: **Faster** than TCP due to its simplicity and l**ack of retransmission mechanisms**.
+- No Congestion Control: Does not reduce transmission rates under network congestion.
+
+### Use Cases
+Applications that require speed and can tolerate some loss of data, like streaming video or audio, online gaming, or VoIP (Voice over Internet Protocol).
+
+### Example
+Streaming a live sports event: UDP is used for faster transmission, even if it means occasional pixelation or minor video artifacts.
+
+## Key Differences
+
+### 1. Reliability:
+
+- TCP: **Reliable** transmission, ensuring data is delivered **accurately** and in **order**.
+- UDP: **Unreliable** transmission; **data may be lost** or arrive out of order.
+
+### 2. Connection:
+
+- TCP: **Connection-oriented**; establishes a connection before transmitting data.
+- UDP: **Connectionless**; sends data without establishing a connection.
+
+### 3. Speed and Overhead:
+
+- TCP: Slower due to **handshaking**, **acknowledgments**, and **congestion** control.
+- UDP: Faster with minimal overhead, suitable for **real-time applications**.
+
+### 4. Data Integrity:
+
+- TCP: **High data integrity**, suitable for applications like file transfers and web browsing.
+- UDP: **Lower data integrity**, acceptable for applications like streaming where perfect accuracy is less critical.
+
+### 5. Use Case Suitability:
+
+- TCP: Used when **data accuracy is more critical than speed**.
+- UDP: Used when **speed is more critical than accuracy**.
+
+## Conclusion
+TCP is used for applications where reliable and accurate data transmission is crucial, whereas UDP is chosen for applications where speed is more important than reliability, and some loss of data is acceptable.
