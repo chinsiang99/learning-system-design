@@ -140,15 +140,15 @@ This method is used in **web browsers** and **CDNs** to serve stale content from
   <img src="./cache-invalidation.png" alt="cache invalidation methods" />
 </div>
 
-## Cache Read Strategies
+# Cache Read Strategies
 Here are the two famous cache read strategies:
 
-### Read through cache
+## Read through cache
 A read-through cache strategy is a caching mechanism where the cache itself is responsible for retrieving the data from the underlying data store when a cache miss occurs. In this strategy, the application requests data from the cache instead of the data store directly. If the requested data is not found in the cache (cache miss), **the cache retrieves the data from the data store, updates the cache with the retrieved data, and returns the data to the application**.
 
 This approach helps to maintain consistency between the cache and the data store, as the cache is always responsible for retrieving and updating the data. It also simplifies the application code since the application doesn't need to handle cache misses and data retrieval logic. The read-through cache strategy can significantly improve performance in scenarios where **data retrieval from the data store is expensive**, and cache misses are relatively infrequent.
 
-### Read aside cache
+## Read aside cache
 A read-aside cache strategy, also known as **cache-aside or lazy-loading**, is a caching mechanism where the **application is responsible for retrieving the data from the underlying data store when a cache miss occurs**. In this strategy, the application first checks the cache for the requested data. If the data is found in the cache (cache hit), the application uses the cached data. However, if the data is not present in the cache (cache miss), the application retrieves the data from the data store, updates the cache with the retrieved data, and then uses the data.
 
 The read-aside cache strategy provides **better control over the caching process**, as the application can decide when and how to update the cache. However, it also **adds complexity to the application code**, as the application must handle cache misses and data retrieval logic. This approach can be beneficial in scenarios where cache misses are relatively infrequent, and the application wants to **optimize cache usage based on specific data access patterns**.
@@ -156,3 +156,29 @@ The read-aside cache strategy provides **better control over the caching process
 <div align="center">
   <img src="./cache-read.png" alt="cache read methods" />
 </div>
+
+# Cache Coherence and Consistency Models
+Cache **coherence** and **consistency** models are essential concepts in the context of caching, particularly in distributed systems or multi-core processors. These models ensure that data **remains accurate and up-to-date across multiple caches or processing units**.
+
+## Cache Coherence
+Cache coherence is a property of multi-core processors or distributed systems that ensures all processors or nodes see the same view of shared data. In a system with multiple caches, each cache may store a local copy of the shared data. When one cache modifies its copy, it is essential that all other caches are **aware of the change to maintain a consistent view of the data**.
+
+To achieve cache coherence, various protocols and techniques can be employed, such as:
+
+- Write-invalidate: When a cache writes to its copy of the shared data, it **broadcasts a message to other caches**, **invalidating their copies**. When another cache requires the updated data, it **fetches the new data from the memory or the cache that made the change**.
+
+- Write-update (or write-broadcast): When a cache writes to its copy of the shared data, it **broadcasts the updated data to all other caches**, which **update their local copies accordingly**.
+
+## Cache Consistency Models
+Cache consistency models **define the rules and guarantees for how data is updated and accessed in a distributed system with multiple caches**. Different consistency models offer varying levels of strictness, balancing performance with the need for data accuracy.
+
+- Strict Consistency: In this model, any write to a data item is instantly visible to all caches. This model provides the highest level of consistency but is difficult to achieve in practice, as it may require significant synchronization overhead and negatively impact performance.
+
+- Sequential Consistency: In this model, all operations on data items appear to occur in a specific sequential order across all caches. While this model allows for better performance than strict consistency, it still requires considerable synchronization and may not be practical in many distributed systems.
+
+- Causal Consistency: In this model, operations that are causally related (i.e., one operation depends on the outcome of another) are guaranteed to appear in order across all caches. Operations that are not causally related can occur in any order. This model provides better performance than sequential consistency while still ensuring a reasonable level of data accuracy.
+
+- Eventual Consistency: In this model, all updates to a data item will eventually propagate to all caches, but there is no guarantee about the order or timing of the updates. This model offers the best performance among the consistency models but provides the weakest consistency guarantees. Eventual consistency is often used in distributed systems where performance and scalability are prioritized over strict data accuracy.
+
+## Summary
+Understanding cache coherence and consistency models is crucial when designing caching strategies for distributed systems or multi-core processors. By selecting the appropriate model for your system, you can strike a balance between performance and data accuracy to meet your specific requirements.
