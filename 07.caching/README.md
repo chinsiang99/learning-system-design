@@ -182,3 +182,34 @@ Cache consistency models **define the rules and guarantees for how data is updat
 
 ## Summary
 Understanding cache coherence and consistency models is crucial when designing caching strategies for distributed systems or multi-core processors. By selecting the appropriate model for your system, you can strike a balance between performance and data accuracy to meet your specific requirements.
+
+# Caching Challenges
+Cache-related problems are a set of challenges that arise when implementing and managing caching systems in software applications. Here are the **top cache-related problems** and their **possible workarounds**:
+
+## 1. Thundering Herd
+The thundering herd **problem occurs when a popular piece of data expires from the cache**, leading to a sudden surge in requests to the origin server to fetch the missing data. This can cause excessive load on the origin server and degrade performance. Solutions to the thundering herd problem include **using staggered expiration times**, **implementing a cache lock**, or using background updates to refresh the cache before the data expires.
+
+## 2. Cache Penetration
+Cache penetration refers to the situation where requests for data bypass the cache and directly access the origin server, reducing the benefits of caching. This typically happens when requests are made for non-existent or rarely accessed data. To mitigate cache penetration, negative caching (caching negative responses) or using a bloom filter to check for the existence of data before querying the cache can be employed.
+
+## 3. Big Key
+A big key is a large piece of data that consumes a significant portion of the cache's capacity. **Storing big keys can lead to cache evictions**, reducing the overall effectiveness of the caching system. Solutions for handling big keys include **compressing the data before caching**, **breaking the data into smaller chunks**, or **using a separate caching strategy specifically designed for large objects**.
+
+## 4. Hot Key
+A hot key refers to a piece of data that is frequently accessed, causing contention and performance issues in the caching system. Hot keys can lead to cache thrashing and an unbalanced distribution of load. Solutions for dealing with hot keys include **using consistent hashing to distribute the load more evenly**, **replicating the hot key across multiple cache nodes**, or **implementing a load balancing strategy to distribute requests across multiple instances of the hot key**.
+
+## 5. Cache Stampede (or Dogpile)
+Cache stampede occurs when **multiple requests** for the same data are made **simultaneously**, causing **excessive load on the cache** and the **origin server**. Cache stampede can be addressed using techniques such as **request coalescing** (*combining multiple requests for the same data into a single request*) or **implementing a read-through cache, where the cache itself fetches the missing data from the origin server**.
+
+<div align="center">
+  <img src="./cache-stampede.png" alt="cache stampede problem" />
+</div>
+
+## 6. Cache Pollution
+Cache pollution occurs **when less frequently accessed data displaces more frequently accessed data in the cache**, leading to a **reduced cache hit rate**. To mitigate cache pollution, **eviction policies like LRU (Least Recently Used) or LFU (Least Frequently Used) can be employed**, which prioritize retaining frequently accessed data in the cache.
+
+## 7. Cache Drift
+Cache drift refers to the **inconsistency between cached data and the data on the origin server**, typically **caused by updates or changes in the data**. To handle cache drift, proper cache invalidation strategies should be implemented to ensure that the cache is updated or invalidated when the data on the origin server changes.
+
+## Summary
+By understanding and addressing these cache-related problems, we can improve the efficiency, performance, and reliability of their caching systems. This, in turn, can enhance the overall performance and user experience of their applications.
