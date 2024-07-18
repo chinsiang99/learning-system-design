@@ -112,3 +112,21 @@ Under this scheme, data is **written to cache alone**, and completion is immedia
 <div align="center">
   <img src="./write-back.png" alt="write back cache" />
 </div>
+
+### 4. Write-behind cache
+It is quite **similar to write-back cache**. In this scheme, data is written to the cache and acknowledged to the application immediately, but it is not immediately written to the permanent storage. Instead, the write operation is deferred, and the **data is eventually written to the permanent storage at a later time**. The **main difference** between write-back cache and write-behind cache is when the data is written to the permanent storage. **In write-back caching**, data is **only written to the permanent storage when it is necessary for the cache to free up space**, while **in write-behind caching**, data is **written to the permanent storage** **at specified intervals**.
+
+## Cache Invalidations Methods
+Here are the famous cache invalidation methods:
+
+### Purge
+The purge method removes cached content for a specific object, URL, or a set of URLs. It’s typically used when there is an update or change to the content and the cached version is no longer valid. When a purge request is received, **the cached content is immediately removed**, and the next request for the content will be served directly from the origin server.
+
+### Refresh
+Fetches requested content from the origin server, even if cached content is available. When a refresh request is received, the cached content is updated with the latest version from the origin server, ensuring that the content is up-to-date. Unlike a purge, a refresh request doesn’t remove the existing cached content; instead, it **updates it with the latest version**.
+
+### Ban
+The ban method invalidates cached content based on specific criteria, such as a URL pattern or header. When a ban request is received, any cached content that matches the specified criteria is immediately removed, and subsequent requests for the content will be served directly from the origin server.
+
+### Time-to-live (TTL) expiration
+This method involves **setting a time-to-live value for cached content**, after which the content is considered stale and must be refreshed. When a request is received for the content, the cache checks the time-to-live value and serves the cached content only if the value hasn’t expired. If the value has expired, the cache fetches the latest version of the content from the origin server and caches it.
