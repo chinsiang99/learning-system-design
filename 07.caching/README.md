@@ -213,3 +213,18 @@ Cache drift refers to the **inconsistency between cached data and the data on th
 
 ## Summary
 By understanding and addressing these cache-related problems, we can improve the efficiency, performance, and reliability of their caching systems. This, in turn, can enhance the overall performance and user experience of their applications.
+
+# Cache Performance Metrics
+When implementing caching, it’s important to measure the performance of the cache to ensure that it is effective in reducing latency and improving system performance. Here are some of the most common cache performance metrics:
+
+## Hit rate
+The hit rate is the **percentage of requests that are served by the cache without accessing the original source**. A high hit rate indicates that the cache is effective in reducing the number of requests to the original source, while a low hit rate indicates that the cache may not be providing significant performance benefits.
+
+## Miss rate
+The miss rate is the **percentage of requests that are not served by the cache and need to be fetched from the original source**. A high miss rate indicates that the cache may not be caching the right data or that the cache size may not be large enough to store all frequently accessed data.
+
+## Cache size
+The cache size is the **amount of memory or storage allocated for the cache**. The cache size can impact the hit rate and miss rate of the cache. A larger cache size can result in a higher hit rate, but it may also increase the cost and complexity of the caching solution.
+
+## Cache latency
+The cache latency is **the time it takes to access data from the cache**. A lower cache latency indicates that the cache is faster and more effective in reducing latency and improving system performance. The cache latency can be impacted by the caching technology used, the cache size, and the cache replacement and invalidation policies.
