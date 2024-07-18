@@ -86,4 +86,22 @@ Random replacement is a cache replacement policy that **removes a random item** 
 ## Comparison of different replacement policies
 Each cache replacement policy has its **advantages** and **disadvantages**, and the best policy to use depends on the specific use case. LRU and LFU are generally more effective than FIFO and random replacement since they take into account the access pattern of the cache. However, LRU and LFU can be more expensive to implement since they require maintaining additional data structures to track access patterns. FIFO and random replacement are simpler to implement but may not be as effective in optimizing cache performance. Overall, the cache replacement policy used should be chosen carefully to balance the **trade-off** between **performance** and **complexity**.
 
+# Cache Invalidation
+## Cache Invalidation Strategies
+While caching is fantastic, it requires some maintenance to keep the cache **coherent** with the source of truth (e.g., database). If the **data is modified in the database**, it **should be invalidated** in the cache; if not, this **can cause inconsistent application behavior**.
 
+Solving this problem is known as **cache invalidation**; there are **four main schemes** that are used:
+
+### 1. Write-through cache
+Under this scheme, data is written into the cache and the corresponding database simultaneously. **The cached data allows for fast retrieval and, since the same data gets written in the permanent storage**, we will have complete data consistency between the cache and the storage. Also, this scheme ensures that **nothing will get lost in case of a crash**, **power failure, or other system disruptions**. Although, write-through minimizes the risk of data loss, since every write operation **must be done twice** before returning success to the client, this scheme has the **disadvantage** of **higher latency for write operations**.
+
+<div align="center">
+  <img src="./write-through.png" alt="write trough cache" />
+</div>
+
+### 2. Write-around cache
+This technique is similar to write-through cache, but data is **written directly to permanent storage**, **bypassing the cache**. This can reduce the cache being flooded with write operations that will not subsequently be re-read, but has the disadvantage that a read request for recently written data will create a **“cache miss”** and must be **read from slower back-end storage** and **experience higher latency**.
+
+<div align="center">
+  <img src="./write-around.png" alt="write around cache" />
+</div>
