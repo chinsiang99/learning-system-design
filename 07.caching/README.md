@@ -105,3 +105,10 @@ This technique is similar to write-through cache, but data is **written directly
 <div align="center">
   <img src="./write-around.png" alt="write around cache" />
 </div>
+
+### 3. Write-back cache
+Under this scheme, data is **written to cache alone**, and completion is immediately confirmed to the client. The write to the permanent storage is done based on certain conditions, for example, when the system needs some free space. **This results in low-latency and high-throughput** for **write-intensive applications**; however, this speed comes with the **risk of data loss** in case of a crash or other adverse event because the only copy of the written data is in the cache.
+
+<div align="center">
+  <img src="./write-back.png" alt="write back cache" />
+</div>
