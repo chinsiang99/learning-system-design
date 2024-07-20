@@ -101,3 +101,45 @@ CDN network topologies **describe the structure and organization of the CDN's di
 
 ## Summary
 CDN architecture involves the strategic placement of PoPs and edge servers, efficient routing and request handling mechanisms, effective caching strategies, and the appropriate selection of network topologies to optimize content delivery. By considering these factors, CDNs can provide significant improvements in latency, performance, reliability, and security for web applications.
+
+# Push CDN vs. Pull CDN
+CDNs can be **categorized into two types**: **Pull CDNs** and **Push CDNs**. Both types aim to deliver content efficiently, but they differ in how they handle and distribute the content.
+
+## Pull CDN
+In a Pull CDN, **the content is not stored on the CDN's servers by default**. Instead, the CDN **"pulls" the content from the origin server when a user requests it for the first time**. Once the content is cached on the CDN's edge server, subsequent requests for the same content will be served directly from the CDN, reducing the load on the origin server.
+
+When the cached content expires or reaches its Time-to-Live (TTL), the CDN will fetch the content again from the origin server, ensuring that users receive up-to-date content.
+
+Examples of Pull CDNs include Cloudflare, Fastly, and Amazon CloudFront.
+
+### Advantages of Pull CDN
+
+- **Easy to set up and requires minimal changes** to the existing infrastructure.
+- The **origin server is only accessed when content is not available on the CDN**, reducing the load and bandwidth usage.
+- The CDN **automatically handles cache management and content expiration**.
+
+### Disadvantages of Pull CDN
+
+- The **first user to request the content may experience slightly slower load times** as the CDN fetches the content from the origin server.
+- The origin server must be **accessible at all times** for the CDN to fetch the content when needed.
+
+## Push CDN
+In a Push CDN, the **content is "pushed" to the CDN's servers by the content provider**, usually through **manual uploads or automated processes**. The content is proactively distributed across the CDN's edge servers, making it readily available for user requests.
+
+Push CDNs **are typically used for large files or less frequently accessed content**, as they allow for **better control over content distribution and caching**.
+
+Examples of Push CDNs include Rackspace Cloud Files and Akamai NetStorage.
+
+### Advantages of Push CDN
+
+- Better control over content distribution and cache management, especially for large or infrequently accessed files.
+- Content is readily available on the CDN's servers, ensuring consistent load times for users.
+
+### Disadvantages of Push CDN
+
+- M**ore complex to set up and maintain**, as content must be **manually uploaded or synced to the CDN**.
+- Increased storage costs, as content is stored on both the origin server and the CDN's servers.
+- **The responsibility of cache management and content expiration lies with the content provider**.
+
+## Summary
+In short, Pull CDNs are best suited for frequently accessed content and are easier to set up, while Push CDNs offer more control and are ideal for large or infrequently accessed files.
