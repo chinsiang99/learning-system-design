@@ -48,3 +48,17 @@ The origin server is the **primary source of the original, unmodified content**.
 - Centralized Content Storage: It is the **central repository** where all the website's original content is stored and managed.
 - Content Source: It provides the original content to edge servers or directly to users if the content is not cached or when a CDN is not used.
 - Performance Limitations: Directly serving all user requests, especially for sites with a global audience, can lead to slower response times due to geographical distance and increased load.
+
+## Edge Server
+Edge servers, on the other hand, are part of a distributed network of servers, typically provided by a CDN. They c**ache content from the origin server** and deliver it to users from a location closer to the user, thereby reducing latency and improving load times.
+
+### Characteristics:
+- Geographical Distribution: Located in various locations (edge locations) closer to the end-users to reduce the distance that data travels over the network.
+- Content Caching: Stores cached copies of content from the origin server. This caching mechanism allows for faster delivery of content to users and reduces the load on the origin server.
+- Load Balancing and Scalability: Helps in distributing user requests efficiently, handling traffic spikes, and improving the scalability of web content delivery.
+
+## Example Scenario
+Imagine a user from Paris attempting to access a video hosted on a website whose origin server is located in New York. If the website uses a CDN, the user's request might be routed to an edge server in Paris. If the requested video is cached on the Paris edge server, it is delivered quickly to the user from there, significantly reducing the time it would take to fetch the video directly from the origin server in New York.
+
+## Conclusion
+While the origin server is the source of the original content, edge servers play a crucial role in optimizing content delivery to end-users by caching content closer to where users are located. This architecture significantly improves website performance, reduces latency, and enhances user experience, especially for websites with a global audience.
