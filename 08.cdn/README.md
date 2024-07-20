@@ -1,0 +1,2 @@
+# What is CDN?
+A Content Delivery Network (CDN) is a **distributed network of servers** strategically **located across various geographical locations to deliver web content**, such as **images**, **videos**, and **other static assets**, more efficiently to users. The primary purpose of a CDN is to **reduce latency and improve the overall performance of web applications by serving content** from the server nearest to the user. CDNs can also help improve **reliability, availability, and security of web applications**.
