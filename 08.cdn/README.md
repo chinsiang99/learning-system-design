@@ -37,3 +37,14 @@ CDNs play a crucial role in enhancing the performance, reliability, and security
 4. Scalability: CDNs can handle sudden traffic spikes and large volumes of concurrent requests, making it easier to scale web applications to handle growing traffic demands.
 
 5. Security: Many CDNs offer additional security features, such as DDoS protection, Web Application Firewalls (WAF), and SSL/TLS termination at the edge, helping to safeguard web applications from various security threats.
+
+# Origin Server vs. Edge Server
+Origin servers and edge servers are key components in the delivery of web content, especially in content delivery networks (CDNs). They serve different roles in ensuring that users access web content quickly and efficiently. Understanding the distinction between the two is crucial in the context of web architecture and CDN functionality.
+
+## Origin Server
+The origin server is the **primary source of the original, unmodified content**. It hosts the website's content, including HTML files, images, stylesheets, JavaScript, videos, and other digital assets. When a user requests a web resource (like a webpage), the request is directed to the origin server if the content is not cached elsewhere.
+
+### Characteristics:
+- Centralized Content Storage: It is the **central repository** where all the website's original content is stored and managed.
+- Content Source: It provides the original content to edge servers or directly to users if the content is not cached or when a CDN is not used.
+- Performance Limitations: Directly serving all user requests, especially for sites with a global audience, can lead to slower response times due to geographical distance and increased load.
