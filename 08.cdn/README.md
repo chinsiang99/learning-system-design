@@ -62,3 +62,42 @@ Imagine a user from Paris attempting to access a video hosted on a website whose
 
 ## Conclusion
 While the origin server is the source of the original content, edge servers play a crucial role in optimizing content delivery to end-users by caching content closer to where users are located. This architecture significantly improves website performance, reduces latency, and enhances user experience, especially for websites with a global audience.
+
+# CDN Architecture
+
+## Points of Presence (PoPs) and Edge Servers
+A Point of Presence (PoP) is a **physical location containing a group of edge servers** within the **CDN's distributed network**. PoPs are strategically situated across various geographical regions to minimize the latency experienced by users when requesting content. Each PoP typically consists of multiple edge servers to provide redundancy, fault tolerance, and load balancing.
+
+Edge servers are the **servers within a PoP that store cached content and serve it to users**. When a user makes a request for content, the request is directed to the nearest edge server, which either serves the content from its cache or fetches it from the origin server and then caches it for future requests. By serving content from the geographically nearest server, CDNs can significantly reduce latency and improve the overall user experience.
+
+## CDN Routing and Request Handling
+CDN routing is the **process of directing user requests to the most suitable edge server**. Routing decisions are typically based on factors such as network latency, server load, and the user's geographical location. Various techniques can be employed to determine the optimal edge server for handling a request, including:
+
+- Anycast Routing: In anycast routing, **multiple edge servers share a single IP address**. When a user sends a request to that IP address, the network's routing system directs the request to the nearest edge server based on network latency or the number of hops. This approach helps ensure that requests are automatically routed to the most appropriate server.
+
+- DNS-based Routing: **With DNS-based routing, when a user requests content, the CDN's DNS server responds with the IP address of the most suitable edge server**. This approach can take into account factors such as geographical proximity and server load to select the best edge server for handling the request.
+
+- GeoIP-based Routing: **In this approach, the user's geographical location is determined based on their IP address**. The request is then directed to the nearest edge server in terms of geographical distance, which often corresponds to lower network latency.
+
+## Caching Mechanisms
+Caching is a crucial component of CDN architecture. Edge servers cache content to reduce latency and offload traffic from the origin server. Various caching mechanisms can be employed to determine what content is stored, when it is updated, and when it should be removed from the cache. **Some common caching mechanisms include**:
+
+- Time-to-Live (TTL): TTL is a value set by the origin server that determines how long a piece of content should be stored in the cache before it is considered stale and needs to be fetched again from the origin server.
+
+- Cache Invalidation: Cache invalidation is the process of removing content from the cache before its TTL expires. This is typically done when content is updated or deleted on the origin server and needs to be reflected immediately in the CDN.
+
+- Cache Control Headers: Cache control headers are used by the origin server to provide instructions to the CDN regarding caching behavior. These headers can dictate the cacheability of content, its TTL, and other caching-related settings.
+
+## CDN Network Topologies
+CDN network topologies **describe the structure and organization of the CDN's distributed network**. Different topologies can be employed to optimize content delivery based on factors such as performance, reliability, and cost. Some common CDN network topologies include:
+
+- Flat Topology: **In a flat topology, all edge servers in the CDN are directly connected to the origin server**. This approach can be **effective for smaller CDNs, but may not scale well as the network grows**.
+
+- Hierarchical Topology: In a hierarchical topology, **edge servers** are **organized into multiple tiers**, with each tier being responsible for serving content to the tier below it. This approach can improve scalability by distributing the load among multiple levels of servers and reducing the number of direct connections to the origin server.
+
+- Mesh Topology: In a mesh topology, **edge servers are interconnected, allowing them to share content and load with each other**. This approach can enhance the redundancy and fault tolerance of the CDN, as well as improve content delivery performance by reducing the need to fetch content from the origin server.
+
+- Hybrid Topology: A hybrid topology combines elements from various topologies to create an optimized CDN architecture tailored to specific needs. For example, a CDN could use a hierarchical structure for serving static content, while employing a mesh topology for dynamic content delivery.
+
+## Summary
+CDN architecture involves the strategic placement of PoPs and edge servers, efficient routing and request handling mechanisms, effective caching strategies, and the appropriate selection of network topologies to optimize content delivery. By considering these factors, CDNs can provide significant improvements in latency, performance, reliability, and security for web applications.
