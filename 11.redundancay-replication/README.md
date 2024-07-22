@@ -77,3 +77,94 @@ In semi-synchronous replication, the write operation on the primary is not consi
 <div align="center">
   <img src="./replication-strategy.png" alt="replication-strategy" />
 </div>
+
+# Replication Methods
+Replication in database systems is a strategy for **ensuring data availability, redundancy, and load balancing**. There are several replication methods, each with its advantages and challenges.
+
+## 1. Primary-Replica (Master-Slave) Replication
+### Explanation
+In primary-replica replication, there is one primary (master) database and one or more replica (slave) databases. The primary database handles all write operations, while the replicas handle read operations. Changes made in the primary database are **asynchronously replicated to the replica databases**.
+
+### Example
+A web application uses a primary database for all data insertions and updates. It replicates this data to multiple replica databases, which are then used to handle user queries, reducing the load on the primary database.
+
+### Pros
+- Data Redundancy: Provides data redundancy and enhances data availability.
+- Load Balancing: Allows for load balancing by distributing read queries across multiple replicas.
+- Simplicity: Generally simpler to implement and manage than primary-primary replication.
+
+### Cons
+- Write Bottleneck: The primary database can become a bottleneck for write operations.
+- Replication Lag: Changes in the primary may take some time to propagate to the replicas, leading to potential data inconsistency.
+
+## 2. Primary-Primary (Master-Master) Replication
+### Explanation
+In primary-primary replication, **two or more database nodes act as primary nodes**. Each node can handle both read and write operations. Data written to one node is replicated to the other node(s), allowing each node to have an up-to-date copy of the database.
+
+### Example
+In a distributed e-commerce platform, two database servers in different geographical locations both handle user transactions. This setup ensures that if one server goes down, the other can continue to operate, providing both write and read capabilities.
+
+### Pros
+- High Availability: Enhances availability since write operations can be handled by multiple nodes.
+- Load Distribution: Distributes write load across multiple servers.
+- No Single Point of Failure: Reduces the risk of a single point of failure for write operations.
+
+### Cons
+- Conflict Resolution: Requires a mechanism to handle conflicts when the same data is written to multiple nodes simultaneously.
+- Complexity: More complex to implement and manage than primary-replica replication.
+- Overhead: Additional overhead for synchronizing data between primary nodes.
+
+## 3. Multi-Master Replication
+### Explanation
+- **Similar** to primary-primary replication, but **involves more than two nodes, all capable of handling write operations**.
+- Changes in any node are replicated across all other nodes.
+
+### Pros
+- Increases write availability and resilience.
+- Useful in distributed systems for geographic redundancy.
+
+### Cons
+- Complexity increases significantly, especially in conflict resolution.
+Synchronization overhead can impact performance.
+
+## 4. Read-Replica Replication
+### Explanation
+- A variation of primary-replica replication where the replicas are specifically used for read-only operations.
+- Often used in cloud databases for scaling out read operations.
+
+### Pros
+- Improves read performance by distributing read load.
+- Straightforward setup and low impact on the primary node.
+
+### Cons
+Does not improve write capacity.
+Potential replication lag can lead to slightly stale data on replicas.
+
+## 5. Snapshot Replication
+### Explanation
+- Involves replicating data as it **appeared at a specific moment in time**.
+- Often used for replicating databases to a data warehouse for reporting.
+
+### Pros
+- Simple to understand and implement.
+- Useful for offloading complex queries from the operational database.
+
+### Cons
+Not suitable for applications requiring up-to-date, real-time data.
+Can be resource-intensive, depending on the size of the snapshot.
+
+## 6. Hybrid Replication
+### Explanation
+Combines different replication methods to meet specific requirements.
+For example, using multi-master replication between two data centers and read-replica replication within each data center.
+
+### Pros
+- Flexibility to tailor replication strategy to specific needs.
+- Can optimize for both performance and data consistency.
+
+### Cons
+- Increased complexity in configuration and management.
+- Potential for conflicting replication behaviors if not properly coordinated.
+
+## Conclusion
+Primary-replica replication is suitable for scenarios where read operations heavily outweigh writes, and simplicity and ease of management are priorities. On the other hand, primary-primary replication is more suited for systems requiring high availability and resilience, where writes need to be distributed across multiple nodes. However, it comes with increased complexity and the need for effective conflict resolution mechanisms. Choosing the right replication strategy depends on the specific requirements and constraints of the system.
