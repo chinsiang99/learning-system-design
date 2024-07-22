@@ -87,3 +87,25 @@ While the CAP theorem implies that a distributed system must sacrifice either co
 
 Example: Traditional Relational Databases
 Traditional relational databases, such as MySQL or PostgreSQL, are often designed with a focus on consistency and availability. These systems use transactions and ACID (Atomicity, Consistency, Isolation, Durability) properties to ensure data consistency. However, they are typically not built to handle network partitions gracefully and may experience reduced availability or performance during such events.
+
+# Beyond CAP Theorem
+While the CAP theorem has been fundamental to distributed systems design, it is essential to recognize that it represents a simplified view of the trade-offs in distributed systems. In recent years, researchers and practitioners have started exploring more nuanced ways of understanding and addressing the challenges in distributed systems.
+
+## a. Extended CAP (ECAP) Model
+The Extended CAP model expands the original CAP theorem by considering **latency** as a **fourth dimension**. The ECAP model posits that it is impossible to optimize for all four properties — *consistency*, *availability*, *partition tolerance*, and *latency—simultaneously*. In this model, system designers must choose which three properties to prioritize, based on the requirements and constraints of their specific application.
+
+## b. PACELC Theorem
+The PACELC theorem is another extension of the CAP theorem that takes latency and consistency trade-offs into account. PACELC stands for "Partition (P), Availability (A), Consistency (C), Else (E), Latency (L), Consistency (C)." **This theorem states that in case of a network partition**, a system **must choose between availability and consistency** (similar to CAP), but when the system is operating normally (no partitions), it must **choose between latency and consistency**. This highlights the fact that trade-offs exist even in the absence of network partitions.
+
+<div align="center">
+  <img src="./pacelc.png" alt="pacelc" />
+</div>
+
+## c. CRDTs and Hybrid Systems
+**Convergent Replicated Data Types** (CRDTs) are data structures designed to **allow multiple replicas to be updated independently and converge to a consistent state without requiring coordination**. CRDTs can help system designers achieve both strong eventual consistency and high availability. By combining CRDTs with other techniques, it is possible to build hybrid systems that provide tunable consistency guarantees, enabling applications to make trade-offs based on their specific requirements.
+
+## d. Application-specific trade-offs
+The CAP theorem and its extensions provide valuable insights into the fundamental trade-offs in distributed systems design. However, it is crucial to remember that real-world systems often involve more complex and application-specific trade-offs. As a system designer, it is important to understand the unique requirements and constraints of your application and make informed decisions about the trade-offs that best meet those needs.
+
+## Summary
+While the CAP theorem has been foundational to understanding the trade-offs in distributed systems, it is essential to explore and consider more nuanced models and techniques to design systems that effectively address the challenges and requirements of modern applications.
