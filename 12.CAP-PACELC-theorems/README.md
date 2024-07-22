@@ -66,3 +66,24 @@ To make the best decisions regarding the trade-offs in a distributed system, con
 
 ## Summary
 By carefully considering these factors, you can make informed decisions about the trade-offs between consistency, availability, and partition tolerance, resulting in a distributed system that meets your application's requirements and provides an optimal user experience.
+
+# Examples of CAP Theorem in Practice
+The CAP theorem plays a crucial role in the design and implementation of distributed systems. To better understand the practical implications of the CAP theorem, let's examine some examples of distributed systems and their trade-offs between consistency, availability, and partition tolerance.
+
+## a. Consistency and Partition Tolerance (CP) Systems
+Some distributed systems prioritize consistency and partition tolerance over availability. In these systems, the focus is on ensuring that all nodes have the same data at the same time, even if it means sacrificing some availability during network partitions or node failures.
+
+Example: Google's Bigtable
+Bigtable is a distributed storage system used by Google to manage structured data. It is designed to provide **strong consistency**, ensuring that all nodes see the same data at the same time. To achieve this, Bigtable uses a single-master architecture, where a master node coordinates all write operations. During network partitions or master node failures, the system sacrifices availability to maintain consistency and partition tolerance.
+
+## b. Availability and Partition Tolerance (AP) Systems
+Some distributed systems **prioritize availability and partition tolerance over consistency**. These systems are designed to remain operational and responsive to user requests even during network partitions or node failures, at the cost of potentially serving stale or inconsistent data.
+
+Example: Amazon's DynamoDB
+DynamoDB is a managed NoSQL database service provided by Amazon Web Services (AWS). It is designed to provide high availability and partition tolerance by using a **multi-master architecture** and allowing **eventual consistency**. In this system, nodes can accept write operations independently, even during network partitions. However, this design may lead to temporary inconsistencies as data eventually converges across nodes.
+
+## c. Consistency and Availability (CA) Systems
+While the CAP theorem implies that a distributed system must sacrifice either consistency or availability in the presence of network partitions, some systems prioritize consistency and availability in environments where network partitions are rare or can be quickly resolved.
+
+Example: Traditional Relational Databases
+Traditional relational databases, such as MySQL or PostgreSQL, are often designed with a focus on consistency and availability. These systems use transactions and ACID (Atomicity, Consistency, Isolation, Durability) properties to ensure data consistency. However, they are typically not built to handle network partitions gracefully and may experience reduced availability or performance during such events.
