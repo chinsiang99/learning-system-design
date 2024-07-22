@@ -79,3 +79,85 @@ Several well-known SQL databases are available, each with its own features and u
 - Query language and optimization: SQL is a powerful and expressive query language that allows developers to perform complex operations on the data, such as filtering, sorting, grouping, and joining multiple tables based on specified conditions. SQL databases also include query optimizers, which analyze and optimize queries for improved performance.
 
 - Scalability and performance: SQL databases can be scaled vertically by adding more resources (such as CPU, memory, and storage) to a single server. However, horizontal scaling, or distributing the data across multiple servers, can be more challenging due to the relational nature of the data and the constraints imposed by the ACID properties. This can lead to performance bottlenecks and difficulties in scaling for large-scale applications with high write loads or massive amounts of data.
+
+# NoSQL Databases
+NoSQL databases, also known as "Not Only SQL" databases, are a diverse group of non-relational databases designed to address the limitations of traditional SQL databases, particularly in terms of scalability, flexibility, and performance under specific workloads. NoSQL databases do not adhere to the relational model and typically do not use SQL as their primary query language. Instead, they employ various data models and query languages, depending on the specific type of NoSQL database being used.
+
+The key characteristics of NoSQL databases include their **schema-less** design, which allows for **greater flexibility in handling data**; **horizontal scalability**, which makes it easier to distribute data across multiple servers; and their ability to perform well under specific workloads, such as high write loads or large-scale data storage and retrieval.
+
+## Types of NoSQL Databases
+NoSQL databases can be broadly categorized into the following seven types, each with its unique data model and use cases:
+
+<div align="center">
+  <img src="./nosql.png" alt="nosql" />
+</div>
+
+### 1. Key-value databases
+Key-value databases store data as key-value pairs, where the key is a unique identifier and the value is the associated data. These databases excel in scenarios requiring high write and read performance for simple data models, such as session management and real-time analytics.
+
+Use cases: Session management, user preferences, and product recommendations.
+
+Examples: Amazon DynamoDB, Azure Cosmos DB, Riak.
+
+### 2. In-memory key-value databases
+The data is primarily **stored in memory**, unlike disk-based databases. By eliminating disk access, these databases enable minimal response times. Because all data is stored in main memory, in-memory databases risk losing data upon a process or server failure. In-memory databases can persist data on disks by storing each operation in a log or by taking snapshots.
+
+Examples: Redis, Memcached, Amazon Elasticache.
+
+### 3. Document databases
+Document databases are structured similarly to key-value databases except that keys and values are **stored in documents written in a markup language like JSON, BSON, XML, or YAML**. Each document can contain nested fields, arrays, and other complex data structures, providing a high degree of flexibility in representing hierarchical and related data.
+
+Use cases: User profiles, product catalogs, and content management.
+
+Examples: MongoDB, Amazon DocumentDB, CouchDB.
+
+### 4. Wide-column databases
+Wide column databases are **based on tables but without a strict column format**. Rows do not need a value in every column, and segments of rows and columns containing different data formats can be combined.
+
+Use cases: Telemetry, analytics data, messaging, and time-series data.
+
+Examples: Cassandra, Accumulo, Azure Table Storage, HBase.
+
+### 5. Graph databases
+Graph databases map the relationships between data using nodes and edges. Nodes are the individual data values, and edges are the relationships between those values.
+
+Use cases: Social graphs, recommendation engines, and fraud detection.
+
+Examples: Neo4j, Amazon Neptune, Cosmos DB through Azure Gremlin.
+
+### 6. Time series databases
+These databases **store data in time-ordered streams**. Data is not sorted by value or id but by the time of collection, ingestion, or other timestamps included in the metadata.
+
+Use cases: Industrial telemetry, DevOps, and Internet of Things (IOT) applications.
+
+Examples: Graphite, Prometheus, Amazon Timestream.
+
+### 7. Ledger databases
+Ledger databases are based on logs that record events related to data values. These databases **store data changes that are used to verify the integrity of data**.
+
+Use cases: Banking systems, registrations, supply chains, and systems of record.
+
+Examples: Amazon Quantum Ledger Database (QLDB).
+
+## Popular NoSQL Databases
+
+Here are some well-known NoSQL databases:
+
+- MongoDB: A document-oriented database that uses the BSON format for data storage and supports horizontal scaling through sharding.
+
+- Redis: An in-memory, key-value store that supports various data structures and offers fast performance for caching, message queues, and real-time analytics.
+
+- Apache Cassandra: A highly scalable, distributed column-family store that provides high availability and fault tolerance, designed for handling large-scale data across many commodity servers.
+
+- Neo4j: A graph database that offers powerful query capabilities for traversing complex relationships and analyzing connected data.
+
+## Pros and cons of using NoSQL databases
+- Flexibility and schema-less design: One of the primary advantages of NoSQL databases is their schema-less design, which allows for greater flexibility in handling diverse and dynamic data models. This makes it easier to adapt to changing requirements and accommodate new data types without the need for extensive schema modifications, as is often the case with SQL databases.
+
+- Horizontal scalability: NoSQL databases are designed to scale horizontally, enabling the distribution of data across multiple servers, often with built-in support for data replication, sharding, and partitioning. This makes NoSQL databases well-suited for large-scale applications with high write loads or massive amounts of data, where traditional SQL databases may struggle to maintain performance and consistency.
+
+- Performance under specific workloads: NoSQL databases can offer superior performance under specific workloads, such as high write loads, large-scale data storage and retrieval, and complex relationships. By choosing a NoSQL database tailored to the needs of a particular application, developers can optimize performance and resource utilization while maintaining an appropriate level of data consistency and reliability.
+
+- CAP theorem and trade-offs: The CAP theorem states that a distributed data store can provide only two of the following three guarantees: Consistency, Availability, and Partition Tolerance. NoSQL databases often prioritize Availability and Partition Tolerance over Consistency, resulting in a trade-off known as “eventual consistency.” While this may be acceptable in some applications, it can lead to challenges in maintaining data integrity and reconciling conflicting updates in scenarios where strong consistency is required.
+
+- Query complexity and expressiveness: While some NoSQL databases offer powerful query languages and capabilities, they may not be as expressive or versatile as SQL when it comes to complex data manipulation and analysis. This can be a limiting factor in applications that require sophisticated querying, joining, or aggregation of data. Additionally, developers may need to learn multiple query languages and paradigms when working with different types of NoSQL databases.
