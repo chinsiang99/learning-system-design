@@ -493,3 +493,63 @@ A C-language library that implements a small, fast, self-contained, high-reliabi
 - On-Disk Database: Transactional systems, large data storage, general-purpose usage.
 
 Each type of database serves different needs: **in-memory databases are optimal for scenarios requiring rapid data access and processing**, while **on-disk databases are better suited for applications needing reliable data persistence and management of large data volumes**. The choice depends on specific application requirements, including performance needs, data size, and persistence considerations.
+
+# Data Replication vs. Data Mirroring
+Data replication and data mirroring are both methods used in managing and safeguarding data, particularly in the context of databases and storage systems. While they share similarities in creating copies of data, they serve different purposes and have distinct operational characteristics.
+
+## Data Replication
+
+### Definition
+Data Replication **involves copying data from one location to another**. The replication can be synchronous or asynchronous.
+
+### Characteristics
+- Asynchronous/Synchronous: Data replication can be done in real-time (synchronous) or with some delay (asynchronous).
+- Multiple Copies: Often creates multiple copies of data, which can be stored across different servers or locations.
+- Purpose: **Enhances data availability and accessibility**, used for load balancing, and enables data analysis without impacting the primary data source.
+- Use Cases: In distributed databases, backup systems, and data warehouses.
+
+### Example
+A company might replicate its database across multiple data centers to ensure that if one data center goes down, the others can still serve the data.
+
+## Data Mirroring
+
+### Definition
+Data Mirroring refers to the process of creating an exact replica of a database or storage system, usually in real-time.
+
+### Characteristics
+- Synchronous: Mirroring is typically **synchronous**, meaning the data in **the primary and mirror locations are always in sync**.
+- Redundancy for High Availability: Primarily used for redundancy and high availability.
+- Mirror Copy: Usually involves a **one-to-one relationship between the original and the mirror**. **If data changes in the original location, it is immediately written to the mirror**.
+- Use Cases: In **critical applications requiring high availability and data integrity**, such as financial transaction systems.
+
+### Example
+A financial services firm may use data mirroring to ensure that all transactional data is instantly copied to a secondary server, which can take over with no data loss in case the primary server fails.
+
+## Key Differences
+
+1. Real-Time Synchronization:
+
+- Replication: Can be either *synchronous* or *asynchronous*.
+- Mirroring: Typically *synchronous*.
+
+2. Purpose and Use:
+
+- Replication: **Used for load balancing, data localization, and reporting**.
+- Mirroring: Primarily for **disaster recovery and high availability**.
+
+3. Number of Copies:
+
+- Replication: Can create multiple copies of data in different locations.
+- Mirroring: Usually involves a single mirror copy.
+
+4. Performance Impact:
+
+- Replication: Can be designed to minimize performance impact.
+- Mirroring: Since it’s synchronous, it might have a more significant impact on performance.
+
+5. Flexibility:
+
+- Replication: More flexible in terms of configuration and use cases.
+- Mirroring: More rigid, focused on creating a real-time exact copy for redundancy.
+
+Choosing between data replication and data mirroring depends on the specific requirements of the system in terms of availability, performance, and the nature of the data being managed. In many systems, both techniques are used in conjunction to achieve both scalability and high availability.
