@@ -214,3 +214,71 @@ Finally, take into account the **operational complexity and maintenance requirem
 - Community and support: Consider the community and support ecosystem surrounding the database. A vibrant community can provide valuable resources, such as documentation, tutorials, and forums, while a strong support ecosystem can offer professional assistance and guidance when needed.
 
 - Cost: Finally, take into account the cost of using the chosen database, including licensing, hardware, and operational expenses. Depending on your budget and requirements, you may need to weigh the benefits of various databases against their associated costs to make an informed decision.
+
+# ACID vs BASE Properties
+ACID and BASE are two sets of properties that represent different approaches to handling transactions in database systems. They **reflect trade-offs between consistency, availability, and partition tolerance**, especially in distributed databases.
+
+## ACID Properties
+- Definition: ACID stands for **Atomicity**, **Consistency**, **Isolation**, and **Durability**. It's a set of properties that guarantee reliable processing of database transactions.
+
+- Components:
+  - Atomicity: Ensures that a transaction is either fully completed or not executed at all.
+  - Consistency: Guarantees that a transaction brings the database from one valid state to another.
+  - Isolation: Ensures that concurrent transactions do not interfere with each other.
+  - Durability: Once a transaction is committed, it remains so, even in the event of a system failure.
+
+- Example: Consider a bank transfer from one account to another. The transfer operation (debit from one account and credit to another) must be atomic, maintain the consistency of total funds, be isolated from other transactions, and changes must be permanent.
+
+- Use Cases: Ideal for systems requiring high reliability and data integrity, like banking or financial systems.
+
+<div align="center">
+  <img src="./acid.png" alt="acid" />
+</div>
+
+## BASE Properties
+- Definition: BASE stands for **Basically Available**, **Soft state**, and **Eventual consistency**. It's an alternative to ACID in distributed systems, favoring availability over consistency.
+
+- Components:
+  - Basically Available: Indicates that the system is available most of the time.
+  - Soft State: The state of the system may change over time, even without input.
+  - Eventual Consistency: The system will eventually become consistent, given enough time.
+
+- Example: A social media platform using a BASE model may show different users different counts of likes on a post for a short period but eventually, all users will see the correct count.
+
+- Use Cases: Suitable for distributed systems where availability and partition tolerance are more critical than immediate consistency, like social networks or e-commerce product catalogs.
+
+<div align="center">
+  <img src="./base.png" alt="base" />
+</div>
+
+## Key Differences
+- Consistency and Availability: ACID prioritizes **consistency and reliability** of each transaction, while BASE prioritizes **system availability and partition tolerance**, allowing for some level of data inconsistency.
+
+- System Design: ACID is generally used in traditional relational databases, while BASE is often associated with NoSQL and distributed databases.
+
+- Use Case Alignment: ACID is well-suited for applications requiring strong data integrity, whereas BASE is better for large-scale applications needing high availability and scalability.
+
+## Conclusion
+ACID is critical for systems where transactions must be reliable and consistent, while BASE is beneficial in environments where high availability and scalability are necessary, and some degree of data inconsistency is acceptable.
+
+# Real-World Examples and Case Studies
+Understanding the theoretical differences between SQL and NoSQL databases is essential, but examining real-world examples and case studies can provide valuable insights into how these databases are used in practice. This section will explore various use cases where SQL and NoSQL databases have been successfully implemented, highlighting their respective strengths and showcasing how they can be employed to address specific application requirements. Additionally, we will discuss hybrid solutions that combine the capabilities of both database types to create robust and versatile systems. By exploring these real-world scenarios, you can gain a deeper understanding of how to select the appropriate database in your system design interview.
+
+## A. SQL Databases in Action
+1. E-commerce platforms: SQL databases are widely used in e-commerce platforms, where structured data and well-defined relationships are the norm. For example, an online store’s database may have tables for customers, products, orders, and shipping details, all with established relationships. SQL databases enable efficient querying and data manipulation, making it easier for e-commerce platforms to manage inventory, customer data, and order processing.
+
+2. Financial systems: Financial applications, such as banking and trading platforms, rely on SQL databases to maintain transactional consistency, ensure data integrity, and support complex queries. The ACID properties of SQL databases are crucial in this context, as they guarantee the correct processing of transactions and safeguard against data corruption.
+
+3. Content Management Systems (CMS): Many popular CMS platforms, such as WordPress and Joomla, use SQL databases to store content, user data, and configuration information. The structured nature of the data and the powerful query capabilities of SQL databases make them well-suited for managing content and serving dynamic web pages.
+
+## B. NoSQL Databases in Action
+- Social media platforms: NoSQL databases, particularly graph databases, are ideal for managing complex relationships and interconnected data found in social media platforms. For example, Facebook uses a custom graph database called TAO to store user profiles, friend connections, and other social graph data. This allows Facebook to efficiently query and traverse the massive social graph, providing features like friend recommendations and newsfeed personalization.
+
+- Big data analytics: NoSQL databases, such as Hadoop’s HBase and Apache Cassandra, are commonly used for big data analytics, where large-scale data storage and processing are required. These databases are designed to scale horizontally, enabling them to handle vast amounts of data and high write loads. For example, Netflix uses Apache Cassandra to manage its customer data and viewing history, which helps the streaming service to provide personalized content recommendations to its users.
+
+- Internet of Things (IoT): IoT applications generate massive volumes of data from various devices and sensors, often with varying data structures and formats. NoSQL databases like MongoDB and Amazon DynamoDB are suitable for handling this diverse and dynamic data, providing flexible data modeling and high-performance storage capabilities. For example, Philips Hue, a smart lighting system, uses Amazon DynamoDB to store and manage data generated by its connected light bulbs and devices.
+
+## C. Hybrid Solutions
+- Gaming industry: In the gaming industry, developers often use a combination of SQL and NoSQL databases to support different aspects of their applications. For instance, an SQL database may be employed to manage user accounts, in-game purchases, and other transactional data, while a NoSQL database like Redis can be used to store real-time game state information and leaderboards.
+
+- E-commerce with personalized recommendations: Some e-commerce platforms combine SQL databases for transactional data and inventory management with NoSQL databases for personalized recommendations. This hybrid approach allows the platform to leverage the strengths of both database types, ensuring efficient data storage, querying, and analysis for various aspects of the application.
