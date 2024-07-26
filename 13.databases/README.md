@@ -378,3 +378,118 @@ In systems where data changes are infrequent and a slightly less normalized stru
 
 - Normalization **increases the complexity of the write operations**.
 - Denormalization **simplifies read operations but can make write operations more complex**.
+
+# In-Memory Database vs. On-Disk Database
+In-memory databases and on-disk databases are two types of database systems designed for storing and managing data, but they fundamentally differ in how and where they store their data. Understanding these differences is key to choosing the right type of database for a specific application or workload.
+
+## In-Memory Database (IMDB)
+
+### Storage Mechanism:
+- Data Storage: Primarily stores data in the **main memory (RAM)** of the server.
+- Persistence: **Some in-memory databases can persist data on disk**, but the **primary data access and manipulation happen in memory**.
+
+### Performance:
+- Speed: **Offers high performance and low latency, as accessing data in RAM is significantly faster than disk access**.
+- Efficiency: Especially **efficient for read-heavy operations and complex, real-time computations**.
+
+### Use Cases:
+- Real-Time Analytics: Ideal for applications that **require real-time analysis and reporting**.
+- Caching: Commonly **used for caching where quick data retrieval is crucial**.
+- Session Storage: Used in web applications for **session management**.
+
+### Limitations:
+- Cost: Generally **more expensive due to the high cost of RAM**.
+- Scalability: Scaling **large volumes of data can be challenging and costly**.
+- Data Volatility: **In the event of power loss or system crash, data stored only in memory can be lost** unless the database is designed with persistence mechanisms.
+
+### Examples of In-Memory Databases
+1. Redis:
+
+A widely used in-memory data store, often employed as a distributed cache, message broker, and for quick read/write operations. Redis supports various data structures such as strings, hashes, lists, sets, and sorted sets.
+
+2. Memcached:
+
+A high-performance, distributed memory caching system, originally intended for speeding up dynamic web applications by alleviating database load.
+
+3. SAP HANA:
+
+An in-memory, column-oriented, relational database management system. HANA is known for advanced analytics processing, such as OLAP and OLTP processing on the same platform.
+
+4. Apache Ignite:
+
+A memory-centric distributed database, caching, and processing platform for transactional, analytical, and streaming workloads.
+
+5. Hazelcast IMDG:
+
+An in-memory data grid that offers distributed data structures and computing utilities. It's often used for scalable caching and in-memory data storage.
+
+## On-Disk Database
+### Storage Mechanism:
+- Data Storage: Stores data on **persistent disk storage** (**HDD** or **SSD**).
+- Persistence: Data is inherently persistent and does not require additional mechanisms to survive system restarts.
+
+### Performance:
+- Speed: Generally **slower compared to in-memory databases due to the time required for disk I/O operations**.
+- Suitability: More suited for applications where the speed of data access is less critical.
+
+### Use Cases:
+- Transactional Systems: Widely used in **transactional applications (OLTP systems), where data persistence is key**.
+- Large Data Sets: Ideal for applications with **large data sets that cannot be cost-effectively stored in memory**.
+- General-Purpose Databases: Most traditional databases (like MySQL, PostgreSQL) are on-disk and cater to a wide range of applications.
+
+### Limitations:
+- Speed: The speed can be a limiting factor, especially for applications requiring real-time response.
+- I/O Bottlenecks: Performance can be bottlenecked by disk I/O, particularly in high-throughput scenarios.
+
+### Examples of On-Disk Databases
+1. MySQL:
+
+One of the most popular open-source relational database management systems. MySQL is widely used for web applications and supports a broad array of features.
+
+2. PostgreSQL:
+
+An advanced open-source relational database. PostgreSQL is known for its robustness, scalability, and support for advanced data types and features.
+
+3. MongoDB:
+
+A leading NoSQL database that stores data in JSON-like documents. It is designed for ease of development and scaling.
+
+4. Oracle Database:
+
+A multi-model database management system known for its feature-rich, enterprise-grade capabilities, widely used in large organizations.
+
+5. Microsoft SQL Server:
+
+A relational database management system developed by Microsoft, offering a wide range of data analytics, business intelligence, and transaction processing capabilities.
+
+6. SQLite:
+
+A C-language library that implements a small, fast, self-contained, high-reliability SQL database engine. It's widely used in applications where an embedded, lightweight database is needed.
+
+## Key Differences
+1. Data Storage Location:
+
+- IMDB: Main memory (RAM).
+- On-Disk Database: Persistent disk storage.
+
+2. Performance:
+
+- IMDB: Faster read/write operations.
+- On-Disk Database: Slower, depending on disk I/O.
+
+3. Cost and Scalability:
+
+- IMDB: Higher cost, scaling large data sets is more challenging.
+- On-Disk Database: More cost-effective for large data volumes.
+
+4. Data Persistence:
+
+- IMDB: Requires mechanisms for data durability.
+- On-Disk Database: Inherently persistent.
+
+5. Use Cases:
+
+- IMDB: Real-time processing, caching, session storage.
+- On-Disk Database: Transactional systems, large data storage, general-purpose usage.
+
+Each type of database serves different needs: **in-memory databases are optimal for scenarios requiring rapid data access and processing**, while **on-disk databases are better suited for applications needing reliable data persistence and management of large data volumes**. The choice depends on specific application requirements, including performance needs, data size, and persistence considerations.
