@@ -80,3 +80,65 @@ Here's a comparison of authentication and authorization:
 | **Key Concern**  | Verifying user identity is genuine.                            | Managing user permissions and access levels.               |
 | **Frequency**    | Typically occurs once at the beginning of a session.           | Can occur multiple times, whenever a user requests access. |
 | **Dependence**   | Independent process, can exist without authorization in some systems. | Requires authentication as a prerequisite.                 |
+
+# OAuth vs. JWT for Authentication
+
+**OAuth** and **JWT** (JSON Web Tokens) are both widely used in the field of web security, but they **serve different purposes and are often used in conjunction with each other rather than in opposition**. Understanding their distinct roles is key to implementing effective authentication and authorization strategies in web applications.
+
+## OAuth
+
+### Definition
+OAuth is an **open standard for access delegation**, commonly used as a way for users to **grant websites or applications access to their information on other websites but without giving them the passwords**.
+
+### Characteristics
+- Delegation Protocol: **OAuth is not an authentication protocol but a secure delegation mechanism**. It's used to **grant permissions to a third-party to access user data without exposing user credentials**.
+
+- Tokens: It uses **access tokens for authorization**.
+
+- Use Cases: Commonly used to **allow users to log in to a third-party application using their credentials from a service like Google, Facebook, or Twitter**.
+
+### Example
+A user logs into a third-party app using their Google account. OAuth allows the app to access some of the user’s Google account data, as authorized, without the need to share Google account credentials with the third-party app.
+
+## JWT (JSON Web Tokens)
+
+### Definition
+- **JWT is a token format used in authorization and information exchange**. It’s a JSON object encoded as a string, which is digitally signed, and optionally encrypted.
+
+### Characteristics
+- Authentication & Information Exchange: JWT can be used for both authentication and secure data exchange.
+- Structure: A JWT typically consists of three parts: Header, Payload, and Signature.
+- Stateless: JWTs are self-contained, **allowing stateless authentication**, and are typically used in RESTful APIs.
+- Use Cases: Often used for **token-based authentication systems**.
+
+### Example
+After a user logs in, the server creates a JWT with user information, signs it, and sends it back to the client. The client then uses this JWT to access protected resources by sending it with HTTP requests.
+
+## Key Differences
+
+1. Purpose:
+
+- OAuth: A protocol for authorization. It allows one service to **utilize another service’s user authentication without the need for credentials**.
+- JWT: A format for securely transmitting information. It can be used for authentication and information exchange.
+
+2. Usage in Authentication/Authorization:
+
+- OAuth: Used to grant access to user data and services from one site to another.
+- JWT: Often used as the format of the access token in OAuth, but can also be used independently for authentication and information transfer.
+
+3. State:
+
+- OAuth: Typically relies on server-side storage to keep track of the issued tokens.
+- JWT: Stateless; it contains all the necessary information within the token.
+
+4. Security:
+
+- OAuth: Security depends on the specific implementation but generally relies on SSL/TLS for security during token exchange.
+- JWT: The token itself is secured by its digital signature.
+
+## Conclusion
+- Complementary Technologies: In many implementations, OAuth uses JWT as the format for its tokens. OAuth manages the authorization process, and JWT provides a secure token format.
+- Use JWT for: Securely **transmitting information between parties and stateless authentication**.
+- Use OAuth for: Delegating access to user data to third-party applications **without exposing user credentials**.
+
+Understanding when to use each and how they can work together is crucial for designing secure and efficient authentication and authorization mechanisms in modern web applications.
