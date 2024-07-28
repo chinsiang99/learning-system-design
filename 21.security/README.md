@@ -64,3 +64,19 @@ Authorization always comes after authentication. First, the system recognizes yo
 - Web Application Privileges: On a website, a **regular user might only view content**, while **an editor can create and edit content**, and an **administrator can access user data and site settings**.
 
 Authorization is **about having the right level of access to resources in a software system**. It's crucial for maintaining order and security, much like different access levels are important in a well-organized event or facility.
+
+# Authentication vs. Authorization
+Here's a comparison of authentication and authorization:
+
+
+| Aspect           | Authentication                                                | Authorization                                              |
+|------------------|---------------------------------------------------------------|------------------------------------------------------------|
+| **Definition**   | The process of verifying who a user is.                       | The process of verifying what access a user has.           |
+| **Focus**        | Identity verification.                                        | Access rights and privileges.                              |
+| **Example**      | Entering a username and password.                              | Checking if a user can access a specific resource.         |
+| **How It Works** | Typically involves passwords, biometrics, OTPs, etc.          | Involves settings, roles, and permissions that define access. |
+| **Tools/Methods**| Login forms, OTPs, biometric scanners.                         | Access control lists, role-based access control.           |
+| **Order in Process** | Comes first in the security process.                         | Follows after authentication is successful.                |
+| **Key Concern**  | Verifying user identity is genuine.                            | Managing user permissions and access levels.               |
+| **Frequency**    | Typically occurs once at the beginning of a session.           | Can occur multiple times, whenever a user requests access. |
+| **Dependence**   | Independent process, can exist without authorization in some systems. | Requires authentication as a prerequisite.                 |
