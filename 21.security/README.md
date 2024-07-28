@@ -38,3 +38,29 @@ Basics: Just like the bouncer checks your ID, authentication in software checks 
 4. Behavioral Biometrics: Analyzes patterns in user behavior, like how they type or use a mouse.
 
 Authentication is a crucial first step in securing a software system, ensuring that access is granted only to the right individuals, much like how the right people are allowed into a club or a private event.
+
+# What is Authorization?
+
+Authorization in software systems is like getting a specific wristband at a festival that allows you access to certain areas. It's **about granting or denying permissions to do something after your identity is verified**.
+
+## After Authentication
+Authorization always comes after authentication. First, the system recognizes you (like the club knows who you are), and then it **decides what you are allowed to do** (like what areas of the club you can enter).
+
+## Roles and Permissions:
+
+- Roles: These are like **different types of wristbands or badges**. For example, an 'Admin' might have access to everything, while a 'User' has limited access.
+- Permissions: Specific **actions you're allowed to perform**, like viewing, editing, or deleting information. If you're at a festival, it's like being allowed to enter backstage areas, VIP sections, or just the general area.
+
+## Importance:
+
+- Security: It **prevents users from accessing data or actions that they shouldn't**. Like keeping regular festival-goers out of VIP areas.
+- Data Integrity: Helps **ensure that data isn't wrongly modified or deleted**.
+-Compliance: Many industries have **regulations about who can access or modify certain data**.
+
+## Examples:
+
+- File System Permissions: Like on your computer, where **some files are only accessible by the administrator**.
+- Database Roles: In a company's database, different employees have **different levels of access based on their job**.
+- Web Application Privileges: On a website, a **regular user might only view content**, while **an editor can create and edit content**, and an **administrator can access user data and site settings**.
+
+Authorization is **about having the right level of access to resources in a software system**. It's crucial for maintaining order and security, much like different access levels are important in a well-organized event or facility.
