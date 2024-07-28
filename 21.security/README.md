@@ -173,3 +173,27 @@ Basic Concept: Encryption transforms readable data (plaintext) into a scrambled,
 - Complexity: Implementing and managing encryption strategies can be complex.
 
 Encryption is a fundamental aspect of cybersecurity, acting as a critical barrier against data breaches and cyber attacks. It's like having a secret language that only you and the intended recipient understand, keeping your information safe from prying eyes.
+
+# What are DDoS Attacks?
+A Distributed Denial of Service (DDoS) attack is a **malicious attempt to disrupt normal traffic of a targeted server, service, or network by overwhelming the target or its surrounding infrastructure with a flood of Internet traffic**. DDoS attacks achieve effectiveness by utilizing multiple compromised computer systems as sources of attack traffic. These systems can include computers and other networked resources such as IoT devices.
+
+## How DDoS Attacks Work
+- How It Happens: Hackers use a network of compromised computers and devices (botnets) to **send a flood of internet traffic to a target**, like a website or server.
+- Goal: To **overload the server's capacity to handle requests**, causing slow service or complete shutdown.
+- Types: Volume-based attacks (overwhelming bandwidth), protocol attacks (targeting server resources), and application layer attacks (targeting web applications).
+
+## Common Types of DDoS Attacks
+- Volumetric Attacks: The most common form, these attacks flood the network with a substantial amount of traffic.
+- Protocol Attacks: These target network layer or transport layer protocols to consume server resources or bandwidth.
+- Application Layer Attacks: These are more sophisticated, targeting specific aspects of an application or server.
+
+## Mitigation Strategies
+- Network Redundancy: Having **multiple pathways for network traffic** can help avoid single points of failure.
+- DDoS Protection Services: These services can detect and mitigate DDoS attacks, often through large-scale network infrastructure capable of absorbing and diffusing attack traffic.
+- Firewalls and Anti-DDoS Software: Implementing advanced firewall systems and specific anti-DDoS software can help identify and block attack traffic.
+- Traffic Analysis: Continuously monitoring network traffic can help in identifying anomalies indicative of a DDoS attack.
+- Responsive Plan: Having a response plan in place, including procedures for identifying, mitigating, and recovering from an attack, is crucial for minimizing damage.
+- Good Security Hygiene: Regularly updating security protocols and educating users about the risks of malware can help reduce the number of devices that can be used in DDoS attacks.
+- Scalable Infrastructure: Utilizing cloud services with the ability to scale rapidly can absorb and disperse high traffic loads during an attack.
+
+Mitigating a DDoS attack involves **both preventative measures and reactive strategies**. It's about having a robust defense to either prevent the traffic jam or clear it quickly if it happens. Regularly updating security protocols and being prepared to respond swiftly are key to minimizing the impact of such attacks.
