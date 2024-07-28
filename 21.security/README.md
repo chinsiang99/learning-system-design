@@ -142,3 +142,34 @@ After a user logs in, the server creates a JWT with user information, signs it, 
 - Use OAuth for: Delegating access to user data to third-party applications **without exposing user credentials**.
 
 Understanding when to use each and how they can work together is crucial for designing secure and efficient authentication and authorization mechanisms in modern web applications.
+
+# What is Encryption?
+
+Encryption in software systems is **like sending a secret letter where the message is scrambled into a code**. Only someone with the right key can read it. It's **a method to protect data by making it unreadable to unauthorized users**.
+
+Basic Concept: Encryption transforms readable data (plaintext) into a scrambled, unreadable format (ciphertext). To turn it back into readable form, you need the correct decryption key.
+
+## Types of Encryption:
+
+- Symmetric Encryption: Uses the same key for encrypting and decrypting data. Think of it as a lock and key system where the **same key locks and unlocks the box**.
+- Asymmetric Encryption: Uses **two different keys** – a *public* key for encryption and a *private* key for decryption. It's like having a public mailbox where anyone can drop a message (public key), but only you have the key to open it (private key).
+
+## Why It's Used:
+
+- Data Security: To protect sensitive data like passwords, credit card numbers, or confidential communications.
+- Privacy: Ensures that private conversations or information stay private.
+- Integrity: By encrypting data, it helps in verifying that the data has not been altered during transmission.
+
+## Where It's Used:
+
+- Secure Websites: HTTPS uses encryption to secure the data transmitted between your browser and the website.
+- Online Payments: Encryption protects your financial details when you buy something online.
+- Emails and Messaging: Services use encryption to keep your messages secure.
+
+## Challenges:
+
+- Key Management: Keeping the encryption keys safe is crucial. If someone gets the key, they can decrypt your data.
+- Performance: Encryption can slow down systems because it takes time to encrypt and decrypt data.
+- Complexity: Implementing and managing encryption strategies can be complex.
+
+Encryption is a fundamental aspect of cybersecurity, acting as a critical barrier against data breaches and cyber attacks. It's like having a secret language that only you and the intended recipient understand, keeping your information safe from prying eyes.
