@@ -45,3 +45,59 @@ Distributed File Systems are a **type of file system that manage the storage and
 
 ## Conclusion
 Distributed File Systems are crucial for modern computing environments where large-scale data storage, high availability, and remote access are required. They provide an effective solution for managing data across multiple locations but come with challenges that need careful management, especially regarding synchronization, security, and performance.
+
+# Architecture of a Distributed File System
+The internal architecture of a distributed file system (DFS) is **designed to manage data across a network of machines efficiently**. While the specific architecture can vary depending on the particular DFS, there are common components and principles that many distributed file systems share.
+
+## Key Components of a Distributed File System
+1. Client Interface
+- Function: Provides a way for clients (users or applications) to access and manipulate files as if they were on a local file system.
+- Implementation: Typically includes a set of APIs or command-line tools that interact with the DFS.
+
+2. Metadata Servers
+- Function: Manage metadata about files, such as location information, directory structures, permissions, and file attributes.
+- Characteristics: Often, metadata is separated from actual file data for efficiency. Metadata servers can be a single point of failure, so they are often replicated for reliability.
+
+3. Data Nodes or Storage Nodes
+- Function: Store the actual file data.
+- Characteristics: Data is often distributed across multiple nodes for redundancy and availability. These nodes handle read/write operations as instructed by the control plane (metadata servers).
+
+4. Replication and Redundancy Mechanism
+- Function: Ensures data availability and durability by replicating files across multiple nodes.
+- Characteristics: The system can automatically replicate data to handle node failures and ensure data integrity.
+
+5. Load Balancer or Scheduler
+- Function: Distributes workload evenly across different nodes and manages resource allocation.
+-Characteristics: Essential for optimizing performance and preventing any single node from becoming a bottleneck.
+
+6. Network Infrastructure
+- Function: Connects all components of the DFS and facilitates communication between them.
+- Characteristics: Reliability and speed of the network are crucial for the performance of a DFS.
+
+7. Synchronization and Consistency Mechanisms
+- Function: Ensures that all copies of a file are kept consistent across the system.
+- Characteristics: Different systems use various models of consistency (strong, eventual, etc.) and synchronization techniques.
+
+8. Fault Tolerance and Recovery Mechanisms
+- Function: Handles failures of nodes or network components without data loss or significant downtime.
+- Characteristics: Includes mechanisms for detecting failures, re-routing requests, and restoring data from backups or replicas.
+
+9. Security Features
+- Function: Protects data from unauthorized access and ensures secure communication across the network.
+- Characteristics: May include encryption, access control lists, authentication mechanisms, and secure protocols.
+
+## Example: Hadoop Distributed File System (HDFS)
+To illustrate, let's consider HDFS, a commonly used DFS:
+
+- Client Interface: HDFS provides interfaces for clients to interact with the file system.
+- NameNode: The central metadata server in HDFS, storing the file system tree and metadata for all files and directories.
+- DataNodes: Store actual data in HDFS. Each file is divided into blocks, and each block is stored on multiple DataNodes.
+- Replication: HDFS replicates each data block across multiple DataNodes to ensure fault tolerance.
+- YARN (Yet Another Resource Negotiator): Responsible for managing resources in the Hadoop cluster and scheduling tasks.
+
+<div align="center">
+  <img src="./hdfs-architecture.png" alt="hdfs-architecture" />
+</div>
+
+## Conclusion
+The architecture of a distributed file system is complex and involves multiple components working together to manage, store, and retrieve data efficiently across a network. This architecture allows DFS to provide high availability, scalability, and reliability, making it suitable for storing and processing large amounts of data in distributed computing environments.
