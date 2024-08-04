@@ -426,3 +426,73 @@ In an e-commerce system, the service bus manages communications between the inve
 
 ## Conclusion
 Choosing between a message queue and a service bus depends on the specific needs of your system. For simpler, point-to-point, asynchronous communication, a message queue is often sufficient and more efficient. However, for more complex scenarios involving multiple applications and services, especially where advanced message processing and orchestration are required, a service bus is more appropriate.
+
+# Stateful vs. Stateless Architecture
+Stateful and Stateless architectures represent two different approaches to managing user information and server interactions in software design, particularly in web services and applications. Understanding the distinctions between them is crucial for designing systems that efficiently handle user sessions and data.
+
+## Stateful Architecture
+
+### Definition
+Stateful Architecture means the server retains a record of previous interactions and uses this information for subsequent transactions. Each session is unique to a user, and the server stores the session state.
+
+### Characteristics
+- Session Memory: The server remembers previous interactions and may store data like user preferences or activity history.
+- Resource Usage: Typically requires more resources to maintain state information.
+- User Experience: Can offer a more personalized user experience as it retains user context.
+
+### Use Cases
+- Applications requiring a persistent user state, like online banking or e-commerce sites where a user's logged-in session and shopping cart need to be maintained.
+- Real-time applications where the current state is critical, like online gaming.
+
+### Example
+A shopping website where your shopping cart is remembered across different pages and visits during the same session.
+
+<div align="center">
+  <img src="./stateful-stateless.png" alt="stateful-stateless" />
+</div>
+
+## Stateless Architecture
+
+### Definition
+Stateless Architecture means the server does not retain any memory of past interactions. Each request from a user must contain all the information necessary to understand and complete the request.
+
+### Characteristics
+- No Session Memory: The server treats each request as independent; no session information is stored between requests.
+- Scalability: More scalable as less information is retained by the server.
+- Simplicity and Performance: Generally simpler and can offer better performance, as there’s no need to synchronize session data across servers.
+
+### Use Cases
+- RESTful APIs, where each HTTP request contains all necessary information, making it stateless.
+- Microservices architecture, where stateless services are preferred for scalability and simplicity.
+
+### Example
+A stateless API where each HTTP request for user data includes an authentication token and all necessary parameters.
+
+## Key Differences
+1. Session Memory:
+
+- Stateful: Maintains user state and session data.
+- Stateless: Does not store user state; each request is independent.
+
+2. Resource Usage:
+
+- Stateful: Higher resource usage due to session memory.
+- Stateless: Lower resource usage, as no session data is maintained.
+
+3. Scalability:
+
+- Stateful: Less scalable as maintaining state across a distributed system can be complex.
+- Stateless: More scalable as each request is self-contained.
+
+4. Complexity:
+
+- Stateful: More complex due to the need for session management.
+- Stateless: Simpler, with each request being independent and self-contained.
+
+5. User Experience:
+
+- Stateful: Can offer a more personalized experience with session history.
+- Stateless: Offers a consistent experience without personalization based on past interactions.
+
+## Conclusion
+Stateful architectures are well-suited for applications where user history and session data are important, while stateless architectures are ideal for services where scalability and simplicity are priorities, and each request can be treated independently.
