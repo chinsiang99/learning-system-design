@@ -554,4 +554,170 @@ A financial services firm may use data mirroring to ensure that all transactiona
 
 Choosing between data replication and data mirroring depends on the specific requirements of the system in terms of availability, performance, and the nature of the data being managed. In many systems, both techniques are used in conjunction to achieve both scalability and high availability.
 
-# Database Federation (please review back this section in the future)
+# 🗄️ Database Federation
+
+## 📘 Overview
+
+**Database Federation** (also called **Federated Database System**) is an approach that allows you to query and manage data across multiple **heterogeneous databases** as if they were a **single, unified database**.
+
+Instead of consolidating all data into one central storage, a federated system creates a **virtual layer** (often called a *federation layer*) that connects to multiple databases and enables unified access using standard query languages (like SQL).
+
+---
+
+## 🧠 Key Concept
+
+A **federated database** doesn’t physically move or replicate data.  
+It uses **connectors or adapters** to access external data sources dynamically.
+
+When you query the federated database, it:
+1. **Parses** your query.
+2. **Routes** sub-queries to the relevant databases.
+3. **Aggregates** results and presents them as one response.
+
+---
+
+## 🏗️ Architecture
+
+```
+          ┌───────────────────────────────┐
+          │         Application           │
+          └──────────────┬────────────────┘
+                         │
+                         ▼
+             ┌────────────────────────┐
+             │  Federation / Virtual   │
+             │      Query Layer        │
+             └────────────┬────────────┘
+            ┌─────────────┼──────────────┐
+            ▼             ▼              ▼
+     ┌────────────┐ ┌────────────┐ ┌────────────┐
+     │ MySQL DB   │ │ MongoDB    │ │ PostgreSQL │
+     └────────────┘ └────────────┘ └────────────┘
+```
+
+---
+
+## 💡 Use Cases
+
+| Scenario | Description |
+|-----------|--------------|
+| **Data virtualization** | Query multiple data sources (SQL + NoSQL) in real time without moving data. |
+| **Cross-department reporting** | Combine HR data (in Oracle) with Sales data (in MySQL) for unified analytics. |
+| **Legacy system integration** | Access old databases alongside modern cloud databases seamlessly. |
+| **Hybrid or multi-cloud setups** | Query AWS RDS, Google BigQuery, and Azure SQL together. |
+| **Data mesh / Data fabric architectures** | Each domain keeps control of its own data, yet organization-wide analytics are possible. |
+
+---
+
+## ✅ Pros
+
+| Advantage | Description |
+|------------|-------------|
+| **Unified view** | Query different databases as one logical entity. |
+| **No data duplication** | No need to ETL or replicate data into one place. |
+| **Real-time data access** | Always fetches the latest data from source systems. |
+| **Faster integration** | Easier to connect existing systems without heavy migrations. |
+| **Cost-efficient** | Saves on data storage and ETL pipeline costs. |
+
+---
+
+## ⚠️ Cons
+
+| Disadvantage | Description |
+|---------------|-------------|
+| **Performance issues** | Querying multiple sources increases latency. |
+| **Complex optimization** | Hard to tune queries across heterogeneous systems. |
+| **Security concerns** | Accessing multiple databases increases the attack surface. |
+| **Limited transactions** | Cross-database ACID transactions can be difficult. |
+| **Dependency on connectors** | Functionality depends on the federation engine’s connector quality. |
+
+---
+
+## 🔍 Example
+
+### Using **PostgreSQL Foreign Data Wrapper (FDW)**
+
+PostgreSQL allows connecting to other databases via **FDWs**.
+
+```sql
+-- Enable FDW extension
+CREATE EXTENSION postgres_fdw;
+
+-- Create a foreign server connection
+CREATE SERVER sales_mysql
+FOREIGN DATA WRAPPER mysql_fdw
+OPTIONS (host 'mysql-server', port '3306', database 'sales');
+
+-- Create user mapping
+CREATE USER MAPPING FOR current_user
+SERVER sales_mysql
+OPTIONS (username 'admin', password 'admin123');
+
+-- Import foreign schema
+IMPORT FOREIGN SCHEMA public
+FROM SERVER sales_mysql INTO sales_data;
+
+-- Query MySQL data from PostgreSQL
+SELECT * FROM sales_data.orders WHERE total_amount > 1000;
+```
+
+This lets you query MySQL tables as if they were part of PostgreSQL.
+
+---
+
+## 🧩 Real-World Examples
+
+| Company / Tool | Description |
+|------------------|-------------|
+| **Google BigQuery Federation** | Query external data (Cloud SQL, Sheets, Bigtable) using standard SQL in BigQuery. |
+| **AWS Athena Federation** | Query data across S3, RDS, Redshift, and on-prem sources via connectors. |
+| **Presto / Trino** | Open-source federated SQL engine that queries data across many sources (Hive, Cassandra, MySQL, etc.). |
+| **Denodo Platform** | Commercial data virtualization platform used by enterprises for federated queries. |
+| **Dremio** | Self-service data platform with strong federation and query acceleration features. |
+
+---
+
+## 🧠 Typical Scenario
+
+**Company X** stores:
+- Sales data in **MySQL**
+- Customer data in **PostgreSQL**
+- Analytics logs in **BigQuery**
+
+The BI team needs to build a **unified dashboard**.
+
+Instead of replicating data, they use **Trino** or **BigQuery Federation** to:
+- Query all sources in one SQL statement.
+- Join MySQL + PostgreSQL + BigQuery data in real time.
+- Build dashboards with tools like Tableau or Looker.
+
+---
+
+## 🧰 Common Federation Engines / Tools
+
+| Category | Examples |
+|-----------|-----------|
+| Open-source | **Trino**, **Presto**, **Apache Drill**, **PostgreSQL FDW**, **ClickHouse External Dictionaries** |
+| Cloud-native | **Google BigQuery Federation**, **AWS Athena Federation**, **Azure Synapse** |
+| Enterprise | **Denodo**, **Dremio**, **IBM Cloud Pak for Data** |
+
+---
+
+## 🧾 Summary
+
+| Feature | Description |
+|----------|-------------|
+| **Definition** | Access and query multiple databases as a single system. |
+| **Goal** | Enable unified data access without data duplication. |
+| **When to use** | When you need real-time, cross-database insights. |
+| **When not to use** | When performance or transactional integrity across systems is critical. |
+
+---
+
+## 📚 Further Reading
+
+- [Trino Documentation](https://trino.io/docs/current/)
+- [BigQuery Federated Queries](https://cloud.google.com/bigquery/docs/federated-queries)
+- [AWS Athena Federation](https://docs.aws.amazon.com/athena/latest/ug/connectors.html)
+- [PostgreSQL FDW Guide](https://www.postgresql.org/docs/current/postgres-fdw.html)
+- [Denodo Data Virtualization](https://www.denodo.com/en/solutions/data-virtualization)
