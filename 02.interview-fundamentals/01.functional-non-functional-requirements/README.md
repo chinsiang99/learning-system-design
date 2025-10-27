@@ -102,7 +102,9 @@ Quality attributes and constraints shaping the architecture.
 - “What are the peak TPS and growth rates?”
 - “Which user path is most latency-sensitive?”
 - “What’s acceptable staleness and consistency level?”
-- “RPO/RTO targets and multi-region expectations?”
+- “RPO/RTO (Recovery Point Objective / Recovery Time Objective) targets and multi-region expectations?”
+- Note that Recovery point objective here means maximum amount of data loss a business can tolerate
+- Note that Recovery time objective here means aximum acceptable downtime after an outage
 
 ---
 
