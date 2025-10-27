@@ -123,4 +123,5 @@ Quality attributes and constraints shaping the architecture.
 - **SLA/SLO/SLA:** Availability & performance targets (external vs internal).
 - **RPO/RTO:** Max data loss / recovery time after incidents.
 - **CQRS:** Separate read/write paths to optimize scale & latency.
+- Command Query Responsibility Segregation, is a software design pattern that separates a system's read and write operations into distinct models
 
